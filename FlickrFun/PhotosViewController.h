@@ -1,5 +1,5 @@
 //
-//  FlickrFunViewController.h
+//  PhotosViewController.h
 //  FlickrFun
 //
 //  Created by Chris D'Angelo on 1/2/13.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FlickrFunViewController : UIViewController
+@interface PhotosViewController : UITableViewController
 
 @end
