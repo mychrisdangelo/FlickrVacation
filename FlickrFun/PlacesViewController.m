@@ -36,8 +36,11 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
-    self.topPlaces = [FlickrFetcher topPlaces];
-    [self.topPlaces sort]
+    NSArray *myPlaces = [FlickrFetcher topPlaces];
+    NSSortDescriptor *placeDescriptor = [[NSSortDescriptor alloc] initWithKey:FLICKR_PLACE_NAME ascending:YES];
+    NSArray *sortedArray = [myPlaces sortedArrayUsingDescriptors:[NSArray arrayWithObject:placeDescriptor]];
+    self.topPlaces = sortedArray;
+    
 }
 
 - (void)didReceiveMemoryWarning
