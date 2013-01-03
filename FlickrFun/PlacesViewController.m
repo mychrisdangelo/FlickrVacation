@@ -8,7 +8,7 @@
 
 #import "PlacesViewController.h"
 #import "FlickrFetcher.h"
-#import "PhotoTableViewController.h"
+#import "PhotosFromPlaceTableViewController.h"
 
 @interface PlacesViewController ()
 @end
@@ -141,7 +141,6 @@
     if ([segue.identifier isEqualToString:@"ShowPhotoList"]) {
         NSDictionary *place = [self.topPlaces objectAtIndex:[self.tableView indexPathForCell:sender].row];
         [segue.destinationViewController setPlace:place];
-        // [segue.destinationViewController setPhotos:[FlickrFetcher photosInPlace:place maxResults:MAX_RESULTS]];
     }
 }
 

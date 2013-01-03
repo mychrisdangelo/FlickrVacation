@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		403847BC169515AC00B70E2F /* PhotoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 403847BB169515AC00B70E2F /* PhotoTableViewController.m */; };
+		403847DE1695634200B70E2F /* PhotosFromPlaceTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 403847DD1695634100B70E2F /* PhotosFromPlaceTableViewController.m */; };
 		40C10A711694EAE700BF89DB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40C10A701694EAE700BF89DB /* UIKit.framework */; };
 		40C10A731694EAE700BF89DB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40C10A721694EAE700BF89DB /* Foundation.framework */; };
 		40C10A751694EAE700BF89DB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40C10A741694EAE700BF89DB /* CoreGraphics.framework */; };
@@ -26,6 +27,8 @@
 /* Begin PBXFileReference section */
 		403847BA169515AC00B70E2F /* PhotoTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoTableViewController.h; sourceTree = "<group>"; };
 		403847BB169515AC00B70E2F /* PhotoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoTableViewController.m; sourceTree = "<group>"; };
+		403847DC1695634100B70E2F /* PhotosFromPlaceTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotosFromPlaceTableViewController.h; sourceTree = "<group>"; };
+		403847DD1695634100B70E2F /* PhotosFromPlaceTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotosFromPlaceTableViewController.m; sourceTree = "<group>"; };
 		40C10A6C1694EAE700BF89DB /* FlickrFun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlickrFun.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		40C10A701694EAE700BF89DB /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		40C10A721694EAE700BF89DB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -93,6 +96,8 @@
 			isa = PBXGroup;
 			children = (
 				40C10A961694EB7D00BF89DB /* FlickrFetcher */,
+				403847DC1695634100B70E2F /* PhotosFromPlaceTableViewController.h */,
+				403847DD1695634100B70E2F /* PhotosFromPlaceTableViewController.m */,
 				403847BA169515AC00B70E2F /* PhotoTableViewController.h */,
 				403847BB169515AC00B70E2F /* PhotoTableViewController.m */,
 				40C10A9B1694F1AB00BF89DB /* PlacesViewController.h */,
@@ -203,6 +208,7 @@
 				40C10A9A1694EB7D00BF89DB /* FlickrFetcher.m in Sources */,
 				40C10A9D1694F1AB00BF89DB /* PlacesViewController.m in Sources */,
 				403847BC169515AC00B70E2F /* PhotoTableViewController.m in Sources */,
+				403847DE1695634200B70E2F /* PhotosFromPlaceTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

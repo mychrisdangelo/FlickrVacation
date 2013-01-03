@@ -7,23 +7,15 @@
 //
 
 #import "PhotoTableViewController.h"
-#import "PlacesViewController.h"
 #import "FlickrFetcher.h"
 
 @interface PhotoTableViewController ()
-@property (nonatomic, weak) NSString *photoListDescription;
+
 @end
 
 @implementation PhotoTableViewController
 
 @synthesize photos = _photos;
-@synthesize photoListDescription = _photoListDescription;
-
-- (void)setPhotosWithDescription:(NSArray *)photos description:(NSString *)photoListDescription
-{
-    self.photos = photos;
-    self.photoListDescription = photoListDescription;
-}
 
 - (id)initWithStyle:(UITableViewStyle)style
 {

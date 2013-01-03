@@ -14,6 +14,4 @@
 @interface PhotoTableViewController : UITableViewController
 @property (nonatomic, strong) NSArray *photos;
 
-- (void)setPhotosWithDescription:(NSArray *)photos description:(NSString *)photoListDescription;
-
 @end

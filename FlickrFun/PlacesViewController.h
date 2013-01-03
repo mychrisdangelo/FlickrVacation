@@ -11,4 +11,7 @@
 @interface PlacesViewController : UITableViewController
 @property (nonatomic, strong) NSArray *topPlaces; // NSArray of NSDictionary objects
 
++ (NSString *)parseCityName:(NSDictionary *)place;
++ (NSString *)parseStateAndCountryName:(NSDictionary *)place;
+
 @end

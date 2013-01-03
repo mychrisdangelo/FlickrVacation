@@ -45,10 +45,10 @@
             </objects>
             <point key="canvasLocation" x="2961" y="148"/>
         </scene>
-        <!--Photo Table View Controller-->
+        <!--Photos From Place Table View Controller-->
         <scene sceneID="4Xe-j5-O6K">
             <objects>
-                <tableViewController id="G3K-kG-XaD" customClass="PhotoTableViewController" sceneMemberID="viewController">
+                <tableViewController id="G3K-kG-XaD" customClass="PhotosFromPlaceTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Eqf-ZD-ZbF">
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
