@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
+ 
 @interface PlacesViewController : UITableViewController
 @property (nonatomic, strong) NSArray *topPlaces; // NSArray of NSDictionary objects
+
 @end

@@ -1,34 +1,28 @@
 //
-//  PlacesViewController.m
+//  PhotoTableViewController.m
 //  FlickrFun
 //
 //  Created by Chris D'Angelo on 1/2/13.
 //  Copyright (c) 2013 Chris D'Angelo. All rights reserved.
 //
 
+#import "PhotoTableViewController.h"
 #import "PlacesViewController.h"
 #import "FlickrFetcher.h"
-#import "PhotoTableViewController.h"
 
-@interface PlacesViewController ()
+@interface PhotoTableViewController ()
+@property (nonatomic, weak) NSString *photoListDescription;
 @end
 
-@implementation PlacesViewController
+@implementation PhotoTableViewController
 
-@synthesize topPlaces = _topPlaces;
+@synthesize photos = _photos;
+@synthesize photoListDescription = _photoListDescription;
 
-+ (NSString *)parseCityName:(NSDictionary *)place
+- (void)setPhotosWithDescription:(NSArray *)photos description:(NSString *)photoListDescription
 {
-    NSString *fullPlace = [place objectForKey:FLICKR_PLACE_NAME];
-    NSArray *parsedPlace = [fullPlace componentsSeparatedByString:@", "];
-    return [parsedPlace objectAtIndex:0];
-}
-
-+ (NSString *)parseStateAndCountryName:(NSDictionary *)place
-{
-    NSString *fullPlace = [place objectForKey:FLICKR_PLACE_NAME];
-    NSArray *parsedPlace = [fullPlace componentsSeparatedByString:@", "];
-    return [[fullPlace componentsSeparatedByString:[[parsedPlace objectAtIndex:0] stringByAppendingString:@", "]] objectAtIndex:1];
+    self.photos = photos;
+    self.photoListDescription = photoListDescription;
 }
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -49,11 +43,6 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
-    NSArray *myPlaces = [FlickrFetcher topPlaces];
-    NSSortDescriptor *placeDescriptor = [[NSSortDescriptor alloc] initWithKey:FLICKR_PLACE_NAME ascending:YES];
-    NSArray *sortedArray = [myPlaces sortedArrayUsingDescriptors:[NSArray arrayWithObject:placeDescriptor]];
-    self.topPlaces = sortedArray;
 }
 
 - (void)didReceiveMemoryWarning
@@ -63,23 +52,29 @@
 }
 
 #pragma mark - Table view data source
-
-// if not implemented will return 1
+// automatically implemented as return 1
 // - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // Return the number of rows in the section.
-    return [self.topPlaces count];
+    return [self.photos count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"PlacesCell";
+    static NSString *CellIdentifier = @"PhotoCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    cell.textLabel.text = [PlacesViewController parseCityName:[self.topPlaces objectAtIndex:indexPath.row]];
-    cell.detailTextLabel.text = [PlacesViewController parseStateAndCountryName:[self.topPlaces objectAtIndex:indexPath.row]];
+    NSString *title = cell.textLabel.text = [[self.photos objectAtIndex:indexPath.row] objectForKey:FLICKR_PHOTO_TITLE];
+    NSString *subtitle = cell.detailTextLabel.text = [[self.photos objectAtIndex:indexPath.row] valueForKeyPath:FLICKR_PHOTO_DESCRIPTION];
+    if ([title isEqualToString:@""]) {
+        if (![subtitle isEqualToString:@""]) {
+            cell.textLabel.text = subtitle;
+            cell.detailTextLabel.text = @"";
+        } else
+            cell.textLabel.text = @"Unknown";
+    }
+    
     return cell;
 }
 
@@ -133,16 +128,7 @@
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
-}
-
-#define MAX_RESULTS 50
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if ([segue.identifier isEqualToString:@"ShowPhotoList"]) {
-        NSDictionary *place = [self.topPlaces objectAtIndex:[self.tableView indexPathForCell:sender].row];
-        [segue.destinationViewController setPlace:place];
-        // [segue.destinationViewController setPhotos:[FlickrFetcher photosInPlace:place maxResults:MAX_RESULTS]];
-    }
+    
 }
 
 @end
