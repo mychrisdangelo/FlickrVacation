@@ -8,6 +8,7 @@
 
 #import "PhotoViewController.h"
 #import "FlickrFetcher.h"
+#import "PhotoTableViewController.h"
 
 @interface PhotoViewController () <UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
@@ -20,6 +21,12 @@
 @synthesize scrollView = _scrollView;
 @synthesize imageView = _imageView;
 @synthesize photo = _photo;
+
+- (void)setPhoto:(NSDictionary *)photo
+{
+    _photo = photo;
+    self.title = [[PhotoTableViewController getPhotoName:photo] objectForKey:TITLE_KEY];
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

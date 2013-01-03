@@ -43,6 +43,24 @@
     // Dispose of any resources that can be recreated.
 }
 
+
++ (NSDictionary *)getPhotoName:(NSDictionary *)photo
+{
+    NSString *title = [photo objectForKey:FLICKR_PHOTO_TITLE];
+    NSString *subtitle = [photo valueForKeyPath:FLICKR_PHOTO_DESCRIPTION];
+    if ([title isEqualToString:@""]) {
+        if (![subtitle isEqualToString:@""]) {
+            title = subtitle;
+            subtitle = @"";
+        } else {
+            title = @"Unknown";
+            subtitle = @"";
+        }
+    }
+    
+    return [NSDictionary dictionaryWithObjectsAndKeys:title, TITLE_KEY, subtitle, SUBTITLE_KEY, nil];
+}
+
 #pragma mark - Table view data source
 // automatically implemented as return 1
 // - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -57,15 +75,9 @@
     static NSString *CellIdentifier = @"PhotoCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    NSString *title = cell.textLabel.text = [[self.photos objectAtIndex:indexPath.row] objectForKey:FLICKR_PHOTO_TITLE];
-    NSString *subtitle = cell.detailTextLabel.text = [[self.photos objectAtIndex:indexPath.row] valueForKeyPath:FLICKR_PHOTO_DESCRIPTION];
-    if ([title isEqualToString:@""]) {
-        if (![subtitle isEqualToString:@""]) {
-            cell.textLabel.text = subtitle;
-            cell.detailTextLabel.text = @"";
-        } else
-            cell.textLabel.text = @"Unknown";
-    }
+    NSDictionary *photo = [PhotoTableViewController getPhotoName:[self.photos objectAtIndex:indexPath.row]];
+    cell.textLabel.text = [photo objectForKey:TITLE_KEY];
+    cell.detailTextLabel.text = [photo objectForKey:SUBTITLE_KEY];
     
     return cell;
 }

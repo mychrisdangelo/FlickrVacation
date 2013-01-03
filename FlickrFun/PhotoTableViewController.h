@@ -9,9 +9,10 @@
 #import <UIKit/UIKit.h>
 
 
-
+#define TITLE_KEY @"PhotoTableViewController.title"
+#define SUBTITLE_KEY @"PhotoTableViewController.subtitle"
 
 @interface PhotoTableViewController : UITableViewController
 @property (nonatomic, strong) NSArray *photos;
-
++ (NSDictionary *)getPhotoName:(NSDictionary *)photo;
 @end
