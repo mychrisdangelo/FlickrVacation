@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		403847BC169515AC00B70E2F /* PhotoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 403847BB169515AC00B70E2F /* PhotoTableViewController.m */; };
 		403847DE1695634200B70E2F /* PhotosFromPlaceTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 403847DD1695634100B70E2F /* PhotosFromPlaceTableViewController.m */; };
+		403847E516956A0C00B70E2F /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 403847E416956A0C00B70E2F /* PhotoViewController.m */; };
 		40C10A711694EAE700BF89DB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40C10A701694EAE700BF89DB /* UIKit.framework */; };
 		40C10A731694EAE700BF89DB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40C10A721694EAE700BF89DB /* Foundation.framework */; };
 		40C10A751694EAE700BF89DB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40C10A741694EAE700BF89DB /* CoreGraphics.framework */; };
@@ -29,6 +30,8 @@
 		403847BB169515AC00B70E2F /* PhotoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoTableViewController.m; sourceTree = "<group>"; };
 		403847DC1695634100B70E2F /* PhotosFromPlaceTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotosFromPlaceTableViewController.h; sourceTree = "<group>"; };
 		403847DD1695634100B70E2F /* PhotosFromPlaceTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotosFromPlaceTableViewController.m; sourceTree = "<group>"; };
+		403847E316956A0C00B70E2F /* PhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoViewController.h; sourceTree = "<group>"; };
+		403847E416956A0C00B70E2F /* PhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoViewController.m; sourceTree = "<group>"; };
 		40C10A6C1694EAE700BF89DB /* FlickrFun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlickrFun.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		40C10A701694EAE700BF89DB /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		40C10A721694EAE700BF89DB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -70,7 +73,6 @@
 			children = (
 				40C10A761694EAE700BF89DB /* FlickrFun */,
 				40C10A6F1694EAE700BF89DB /* Frameworks */,
-				40C10A6D1694EAE700BF89DB /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -80,6 +82,7 @@
 				40C10A6C1694EAE700BF89DB /* FlickrFun.app */,
 			);
 			name = Products;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		40C10A6F1694EAE700BF89DB /* Frameworks */ = {
@@ -96,6 +99,8 @@
 			isa = PBXGroup;
 			children = (
 				40C10A961694EB7D00BF89DB /* FlickrFetcher */,
+				403847E316956A0C00B70E2F /* PhotoViewController.h */,
+				403847E416956A0C00B70E2F /* PhotoViewController.m */,
 				403847DC1695634100B70E2F /* PhotosFromPlaceTableViewController.h */,
 				403847DD1695634100B70E2F /* PhotosFromPlaceTableViewController.m */,
 				403847BA169515AC00B70E2F /* PhotoTableViewController.h */,
@@ -105,6 +110,7 @@
 				40C10A881694EAE700BF89DB /* MainStoryboard_iPhone.storyboard */,
 				40C10A8B1694EAE700BF89DB /* MainStoryboard_iPad.storyboard */,
 				40C10A771694EAE700BF89DB /* Supporting Files */,
+				40C10A6D1694EAE700BF89DB /* Products */,
 			);
 			path = FlickrFun;
 			sourceTree = "<group>";
@@ -209,6 +215,7 @@
 				40C10A9D1694F1AB00BF89DB /* PlacesViewController.m in Sources */,
 				403847BC169515AC00B70E2F /* PhotoTableViewController.m in Sources */,
 				403847DE1695634200B70E2F /* PhotosFromPlaceTableViewController.m in Sources */,
+				403847E516956A0C00B70E2F /* PhotoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

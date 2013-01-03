@@ -9,6 +9,7 @@
 #import "PhotosFromPlaceTableViewController.h"
 #import "PlacesViewController.h"
 #import "FlickrFetcher.h"
+#import "PhotoViewController.h"
 
 @interface PhotosFromPlaceTableViewController ()
 
@@ -18,7 +19,7 @@
 
 @synthesize place = _place;
 
-#define MAX_RESULTS 25
+#define MAX_RESULTS 50
 - (void) setPlace:(NSDictionary *)place
 {
     _place = place;
@@ -45,6 +46,15 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"ShowPhoto"]) {
+        NSDictionary *photo = [self.photos objectAtIndex:[self.tableView indexPathForCell:sender].row];
+        [segue.destinationViewController setPhoto:photo];
+    }
+    
 }
 
 @end

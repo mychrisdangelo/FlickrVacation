@@ -135,7 +135,6 @@
      */
 }
 
-#define MAX_RESULTS 50
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"ShowPhotoList"]) {
