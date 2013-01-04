@@ -129,6 +129,7 @@
 }
 */
 
+#define MAX_RECENTS 20
 + (void)addToRecents:(NSDictionary *)photo
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -142,6 +143,7 @@
             break;
         }
     }
+    if ([recents count] >= MAX_RECENTS) [recents removeLastObject];
     [recents insertObject:photo atIndex:0];
     [defaults setObject:recents forKey:RECENTS_KEY];
     [defaults synchronize];

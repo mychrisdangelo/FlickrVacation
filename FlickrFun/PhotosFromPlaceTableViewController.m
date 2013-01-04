@@ -57,8 +57,4 @@
     
 }
 
-// using inherited method
-// - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-
-
 @end

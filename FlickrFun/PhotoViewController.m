@@ -22,6 +22,7 @@
 @synthesize imageView = _imageView;
 @synthesize photo = _photo;
 
+// photo will be set by prepareforSegue
 - (void)setPhoto:(NSDictionary *)photo
 {
     _photo = photo;
@@ -49,24 +50,26 @@
     // setup scrolling
     self.scrollView.contentSize = self.imageView.image.size;
     self.imageView.frame = CGRectMake(0, 0, self.imageView.image.size.width, self.imageView.image.size.height);
-
+    
     // setup zooming
     self.scrollView.delegate = self;
 }
 
-#warning deprecated need to change this
-/*
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+// thanks to http://www.i4-apps.com/assignment-4-required-tasks/#more-676
+- (void)viewWillLayoutSubviews
 {
-    // Return YES for supported orientations
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
-    } else {
-        return YES;
-    }
+    // zoom to appropriate size
+    CGFloat zoomScaleX = (self.scrollView.bounds.size.width / self.imageView.image.size.width);
+    CGFloat zoomScaleY = (self.scrollView.bounds.size.height / self.imageView.image.size.height);
+    self.scrollView.zoomScale = MAX(zoomScaleX, zoomScaleY);
 }
-*/
 
+/*
+ * Note to self: Three Requirements for implmeneting scrollview zooming
+ * 1. Set the scrollView.delegate to self (done in viewDidLoad)
+ * 2. Implement viewForZomingInScrollView returning the item in the scroll view to be zoomed
+ * 3. set the min, max size of the zoom (which I've done in interface builder
+ */
 - (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
 {
     return self.imageView;
