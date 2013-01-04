@@ -1,5 +1,5 @@
 //
-//  PhotosFromPlaceTableViewController.h
+//  PhotosRecentTableViewController.h
 //  FlickrFun
 //
 //  Created by Chris D'Angelo on 1/3/13.
@@ -8,9 +8,6 @@
 
 #import "PhotoTableViewController.h"
 
-
-@interface PhotosFromPlaceTableViewController : PhotoTableViewController
-
-@property (nonatomic, strong) NSDictionary *place;
+@interface PhotosRecentTableViewController : PhotoTableViewController
 
 @end

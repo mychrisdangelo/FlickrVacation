@@ -17,6 +17,14 @@
 
 @synthesize photos = _photos;
 
+- (void)setPhotos:(NSArray *)photos
+{
+    if (_photos != photos) {
+        _photos = photos;
+        [self.tableView reloadData];
+    }
+}
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -121,18 +129,31 @@
 }
 */
 
++ (void)addToRecents:(NSDictionary *)photo
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSMutableArray *recents = [[defaults objectForKey:RECENTS_KEY] mutableCopy];
+    if (!recents) recents = [NSMutableArray array];
+    NSDictionary *each;
+    for (int i = 0; i < [recents count]; i++) {
+        each = [recents objectAtIndex:i];
+        if ([[each objectForKey:FLICKR_PHOTO_ID] isEqualToString:[photo objectForKey:FLICKR_PHOTO_ID]]) {
+            [recents removeObjectAtIndex:i];
+            break;
+        }
+    }
+    [recents insertObject:photo atIndex:0];
+    [defaults setObject:recents forKey:RECENTS_KEY];
+    [defaults synchronize];
+}
+
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
-    
+    // add photo chosen to recent phots
+    NSDictionary *photo = [self.photos objectAtIndex:indexPath.row];
+    [PhotoTableViewController addToRecents:photo];
 }
 
 @end

@@ -1,31 +1,20 @@
 //
-//  PhotosFromPlaceTableViewController.m
+//  PhotosRecentTableViewController.m
 //  FlickrFun
 //
 //  Created by Chris D'Angelo on 1/3/13.
 //  Copyright (c) 2013 Chris D'Angelo. All rights reserved.
 //
 
+#import "PhotosRecentTableViewController.h"
 #import "PhotosFromPlaceTableViewController.h"
-#import "PlacesViewController.h"
-#import "FlickrFetcher.h"
 #import "PhotoViewController.h"
 
-@interface PhotosFromPlaceTableViewController ()
+@interface PhotosRecentTableViewController ()
 
 @end
 
-@implementation PhotosFromPlaceTableViewController
-
-@synthesize place = _place;
-
-#define MAX_RESULTS 50
-- (void) setPlace:(NSDictionary *)place
-{
-    _place = place;
-    self.title = [PlacesViewController parseCityName:place];
-    self.photos = [FlickrFetcher photosInPlace:place maxResults:MAX_RESULTS];
-}
+@implementation PhotosRecentTableViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -40,6 +29,11 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    self.photos = [[NSUserDefaults standardUserDefaults] objectForKey:RECENTS_KEY];
 }
 
 - (void)didReceiveMemoryWarning
