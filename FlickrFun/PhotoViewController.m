@@ -29,16 +29,15 @@
     if(_photo != photo) {
         _photo = photo;
         self.title = [[PhotoTableViewController getPhotoName:photo] objectForKey:TITLE_KEY];
+        /*
+         * http://developer.apple.com/library/ios/#documentation/uikit/reference/UIView_Class/UIView/UIView.html#//apple_ref/occ/cl/UIView
+         * http://cs193p.m2m.at/assignment-4-task-9-addendum/#more-610
+         * imageView.window returns what it is embeded in. If something is returned then we are on screen
+         * and we can update the photo
+         */
+        if (self.imageView.window)
+            [self loadPhoto];
     }
-    
-    /*
-     * http://developer.apple.com/library/ios/#documentation/uikit/reference/UIView_Class/UIView/UIView.html#//apple_ref/occ/cl/UIView
-     * http://cs193p.m2m.at/assignment-4-task-9-addendum/#more-610
-     * imageView.window returns what it is embeded in. If something is returned then we are on screen
-     * and we can update the photo
-     */
-    if (self.imageView.window)
-        [self loadPhoto];
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil

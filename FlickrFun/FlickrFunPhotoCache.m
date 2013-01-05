@@ -10,6 +10,9 @@
 #import "PhotoViewController.h"
 #import "FlickrFetcher.h"
 
+#define TEN_MB (1024*1024*10)
+#define FILE_EXTENSION @".tmp_photo"
+
 @interface FlickrFunPhotoCache()
 @property (nonatomic, strong) NSFileManager *fileManager;
 @property (nonatomic, strong) NSString *dataPath;
@@ -40,23 +43,59 @@
     return self;
 }
 
+// returns full path of file with MaxDate
++ (NSString *)maxDate:(NSString *)filepath lhs:(NSString *)lhs rhs:(NSString *)rhs
+{
+    NSString *lhsFilepath = [filepath stringByAppendingPathComponent:lhs];
+    NSString *rhsFilepath = [filepath stringByAppendingPathComponent:lhs];
+    
+    NSDictionary *lhsAttributes = [[NSFileManager defaultManager] attributesOfItemAtPath:lhsFilepath error:nil];
+    NSDictionary *rhsAttributes = [[NSFileManager defaultManager] attributesOfItemAtPath:rhsFilepath error:nil];
+    
+    NSDate *lhsCreationDate = [lhsAttributes fileCreationDate];
+    NSDate *rhsCreationDate = [rhsAttributes fileCreationDate];
+    
+    if ([lhsCreationDate compare:rhsCreationDate] == NSOrderedAscending)
+        return lhs;
+    return rhs ? rhs : lhs; // return lhs if rhs is null
+}
+
 - (NSDictionary *)savePhotoToCache:(NSDictionary *)photo
 {
     id photoID = [photo objectForKey:FLICKR_PHOTO_ID];
-    NSLog(@"photo: %@", photo);
-    NSLog(@"photoID: %@", photoID);
-    
     NSString *filepath;
     if ([photoID isKindOfClass:[NSString class]])
-        filepath = [self.dataPath stringByAppendingString:photoID];
+        filepath = [[self.dataPath stringByAppendingPathComponent:photoID] stringByAppendingString:FILE_EXTENSION];
     
+    // if it already exists return
     if ([[NSFileManager defaultManager] fileExistsAtPath:filepath]) {
         return photo;
     }
     
+    // otherwise write to file
     NSURL *photoURL = [FlickrFetcher urlForPhoto:photo format:FlickrPhotoFormatLarge];
     NSData *imageData = [NSData dataWithContentsOfURL:photoURL];
     [self.fileManager createFileAtPath:filepath contents:imageData attributes:nil];
+    
+    // cleanup if over 10MB
+    NSArray *directoryContents = [self.fileManager contentsOfDirectoryAtPath:self.dataPath error:nil];
+    NSLog(@"BEFORE %@", directoryContents);
+    double directorySize = 0;
+    NSString *oldestFilePath;
+    for (NSString *each in directoryContents) {
+        NSString *eachPath = [self.dataPath stringByAppendingPathComponent:each];
+        NSDictionary *fileAttributes = [self.fileManager attributesOfItemAtPath:eachPath error:nil];
+        directorySize += [fileAttributes fileSize];
+        oldestFilePath = [FlickrFunPhotoCache maxDate:self.dataPath lhs:each rhs:oldestFilePath];
+    }
+    NSLog(@"directory size: %f vs %d", directorySize, TEN_MB);
+    NSLog(@"oldest filepath: %@", oldestFilePath);
+    
+    if (directorySize > TEN_MB) {
+        NSString *fileToDelete;
+        fileToDelete = [self.dataPath stringByAppendingPathComponent:oldestFilePath];
+        [self.fileManager removeItemAtPath:fileToDelete error:nil];
+    }
     return nil;
 }
 
@@ -65,7 +104,7 @@
     id photoID = [photo objectForKey:FLICKR_PHOTO_ID];
     NSString *filepath;
     if ([photoID isKindOfClass:[NSString class]])
-        filepath = [self.dataPath stringByAppendingString:photoID];
+        filepath = [[self.dataPath stringByAppendingPathComponent:photoID] stringByAppendingString:FILE_EXTENSION];
     
     NSData *imageData = [self.fileManager contentsAtPath:filepath];
     return [UIImage imageWithData:imageData];;
