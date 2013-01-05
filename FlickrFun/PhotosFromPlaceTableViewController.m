@@ -57,4 +57,12 @@
     
 }
 
+ - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [super tableView:tableView didSelectRowAtIndexPath:indexPath];
+    PhotoViewController *vc = [self.splitViewController.viewControllers lastObject];
+    if ([vc isKindOfClass:[PhotoViewController class]])
+        [vc setPhoto:[self.photos objectAtIndex:indexPath.row]];
+}
+
 @end
