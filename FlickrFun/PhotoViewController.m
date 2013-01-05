@@ -27,15 +27,18 @@
 {
     _photo = photo;
     self.title = [[PhotoTableViewController getPhotoName:photo] objectForKey:TITLE_KEY];
+    NSLog(@"setPhoto");
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
+     NSLog(@"initWithNibName");
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
     }
     return self;
+    
 }
 
 - (void)viewDidLoad
@@ -53,6 +56,7 @@
     
     // setup zooming
     self.scrollView.delegate = self;
+    NSLog(@"viewDidLoad");
 }
 
 // thanks to http://www.i4-apps.com/assignment-4-required-tasks/#more-676
@@ -62,6 +66,7 @@
     CGFloat zoomScaleX = (self.scrollView.bounds.size.width / self.imageView.image.size.width);
     CGFloat zoomScaleY = (self.scrollView.bounds.size.height / self.imageView.image.size.height);
     self.scrollView.zoomScale = MAX(zoomScaleX, zoomScaleY);
+    NSLog(@"viewWillLayoutSubViews");
 }
 
 /*
