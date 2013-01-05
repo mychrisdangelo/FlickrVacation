@@ -75,6 +75,7 @@
     // otherwise write to file
     NSURL *photoURL = [FlickrFetcher urlForPhoto:photo format:FlickrPhotoFormatLarge];
     NSData *imageData = [NSData dataWithContentsOfURL:photoURL];
+    NSLog(@"calling dataWithContentsOfURL - an expensive call from savePhotoToCache");
     [self.fileManager createFileAtPath:filepath contents:imageData attributes:nil];
     
     // cleanup if over 10MB

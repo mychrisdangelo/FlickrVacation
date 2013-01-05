@@ -77,13 +77,8 @@
         // check if file is in cache
         UIImage *image;
         FlickrFunPhotoCache *cache = [[FlickrFunPhotoCache alloc] init];
-        if ([cache savePhotoToCache:self.photo]) {
-            image = [cache getPhotoFromCache:self.photo];
-        } else {
-            NSURL *photoURL = [FlickrFetcher urlForPhoto:self.photo format:FlickrPhotoFormatLarge];
-            NSData *imageData = [NSData dataWithContentsOfURL:photoURL];
-            image = [UIImage imageWithData:imageData];
-        }
+        [cache savePhotoToCache:self.photo];
+        image = [cache getPhotoFromCache:self.photo];
         dispatch_async(dispatch_get_main_queue(), ^{
             [spinner removeFromSuperview];
             self.imageView.image = image;

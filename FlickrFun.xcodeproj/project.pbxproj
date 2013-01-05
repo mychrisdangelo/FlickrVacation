@@ -25,6 +25,7 @@
 		40C10A9A1694EB7D00BF89DB /* FlickrFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 40C10A991694EB7D00BF89DB /* FlickrFetcher.m */; };
 		40C10A9D1694F1AB00BF89DB /* PlacesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40C10A9C1694F1AB00BF89DB /* PlacesViewController.m */; };
 		40F058FD16980BA1009C520B /* FlickrFunPhotoCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F058FC16980BA1009C520B /* FlickrFunPhotoCache.m */; };
+		40F059071698AB4D009C520B /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40F059061698AB4D009C520B /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		40C10A9C1694F1AB00BF89DB /* PlacesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlacesViewController.m; sourceTree = "<group>"; };
 		40F058FB16980BA1009C520B /* FlickrFunPhotoCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrFunPhotoCache.h; sourceTree = "<group>"; };
 		40F058FC16980BA1009C520B /* FlickrFunPhotoCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrFunPhotoCache.m; sourceTree = "<group>"; };
+		40F059061698AB4D009C520B /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40F059071698AB4D009C520B /* MapKit.framework in Frameworks */,
 				40C10A711694EAE700BF89DB /* UIKit.framework in Frameworks */,
 				40C10A731694EAE700BF89DB /* Foundation.framework in Frameworks */,
 				40C10A751694EAE700BF89DB /* CoreGraphics.framework in Frameworks */,
@@ -77,6 +80,7 @@
 		40C10A611694EAE700BF89DB = {
 			isa = PBXGroup;
 			children = (
+				40F059061698AB4D009C520B /* MapKit.framework */,
 				40C10A761694EAE700BF89DB /* FlickrFun */,
 				40C10A6F1694EAE700BF89DB /* Frameworks */,
 			);
