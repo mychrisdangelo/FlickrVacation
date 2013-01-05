@@ -24,6 +24,7 @@
 		40C10A8D1694EAE700BF89DB /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40C10A8B1694EAE700BF89DB /* MainStoryboard_iPad.storyboard */; };
 		40C10A9A1694EB7D00BF89DB /* FlickrFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 40C10A991694EB7D00BF89DB /* FlickrFetcher.m */; };
 		40C10A9D1694F1AB00BF89DB /* PlacesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40C10A9C1694F1AB00BF89DB /* PlacesViewController.m */; };
+		40F058FD16980BA1009C520B /* FlickrFunPhotoCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F058FC16980BA1009C520B /* FlickrFunPhotoCache.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +56,8 @@
 		40C10A991694EB7D00BF89DB /* FlickrFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrFetcher.m; sourceTree = "<group>"; };
 		40C10A9B1694F1AB00BF89DB /* PlacesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlacesViewController.h; sourceTree = "<group>"; };
 		40C10A9C1694F1AB00BF89DB /* PlacesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlacesViewController.m; sourceTree = "<group>"; };
+		40F058FB16980BA1009C520B /* FlickrFunPhotoCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrFunPhotoCache.h; sourceTree = "<group>"; };
+		40F058FC16980BA1009C520B /* FlickrFunPhotoCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrFunPhotoCache.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +115,8 @@
 				403847BB169515AC00B70E2F /* PhotoTableViewController.m */,
 				403847E316956A0C00B70E2F /* PhotoViewController.h */,
 				403847E416956A0C00B70E2F /* PhotoViewController.m */,
+				40F058FB16980BA1009C520B /* FlickrFunPhotoCache.h */,
+				40F058FC16980BA1009C520B /* FlickrFunPhotoCache.m */,
 				40C10A881694EAE700BF89DB /* MainStoryboard_iPhone.storyboard */,
 				40C10A8B1694EAE700BF89DB /* MainStoryboard_iPad.storyboard */,
 				40C10A771694EAE700BF89DB /* Supporting Files */,
@@ -222,6 +227,7 @@
 				403847DE1695634200B70E2F /* PhotosFromPlaceTableViewController.m in Sources */,
 				403847E516956A0C00B70E2F /* PhotoViewController.m in Sources */,
 				400225CC1695D5290059BDE9 /* PhotosRecentTableViewController.m in Sources */,
+				40F058FD16980BA1009C520B /* FlickrFunPhotoCache.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

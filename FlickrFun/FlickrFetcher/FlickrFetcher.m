@@ -14,7 +14,7 @@
 
 + (NSDictionary *)executeFlickrFetch:(NSString *)query
 {
-    [NSThread sleepUntilDate:[NSDate dateWithTimeIntervalSinceNow:1]]; // simulating network slowdown
+    // [NSThread sleepUntilDate:[NSDate dateWithTimeIntervalSinceNow:1]]; // simulating network slowdown
     query = [NSString stringWithFormat:@"%@&format=json&nojsoncallback=1&api_key=%@", query, FlickrAPIKey];
     query = [query stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     // NSLog(@"[%@ %@] sent %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), query);
@@ -77,7 +77,7 @@
 
 + (NSURL *)urlForPhoto:(NSDictionary *)photo format:(FlickrPhotoFormat)format
 {
-    [NSThread sleepUntilDate:[NSDate dateWithTimeIntervalSinceNow:3]]; // simulating network slowdown
+    // [NSThread sleepUntilDate:[NSDate dateWithTimeIntervalSinceNow:3]]; // simulating network slowdown
     return [NSURL URLWithString:[self urlStringForPhoto:photo format:format]];
 }
 
