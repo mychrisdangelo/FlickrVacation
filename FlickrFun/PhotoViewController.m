@@ -10,7 +10,7 @@
 #import "FlickrFetcher.h"
 #import "PhotoTableViewController.h"
 
-@interface PhotoViewController () <UIScrollViewDelegate>
+@interface PhotoViewController () <UIScrollViewDelegate, UISplitViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 
@@ -51,6 +51,14 @@
     
 }
 
+- (void)zoomToFit
+{
+    CGFloat zoomScaleX = (self.scrollView.bounds.size.width / self.imageView.image.size.width);
+    CGFloat zoomScaleY = (self.scrollView.bounds.size.height / self.imageView.image.size.height);
+    self.scrollView.zoomScale = MAX(zoomScaleX, zoomScaleY);
+    [self.scrollView flashScrollIndicators];
+}
+
 - (void)loadPhoto
 {
     // fetch the photo
@@ -67,16 +75,20 @@
     self.scrollView.delegate = self;
     
     // zoom to appropriate size
-    CGFloat zoomScaleX = (self.scrollView.bounds.size.width / self.imageView.image.size.width);
-    CGFloat zoomScaleY = (self.scrollView.bounds.size.height / self.imageView.image.size.height);
-    self.scrollView.zoomScale = MAX(zoomScaleX, zoomScaleY);
-    [self.scrollView flashScrollIndicators];
+    [self zoomToFit];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     [self loadPhoto];
+    self.splitViewController.delegate = self;
+}
+
+// thanks to http://www.i4-apps.com/assignment-4-required-tasks/#more-676
+- (void)viewWillLayoutSubviews
+{
+    [self zoomToFit];
 }
 
 /*
@@ -103,6 +115,22 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)splitViewController:(UISplitViewController *)svc willHideViewController:(UIViewController *)aViewController withBarButtonItem:(UIBarButtonItem *)barButtonItem forPopoverController:(UIPopoverController *)pc
+{
+    barButtonItem.title = @"Photos";
+    self.navigationItem.leftBarButtonItem = barButtonItem;
+    
+}
 
+- (void)splitViewController:(UISplitViewController *)svc willShowViewController:(UIViewController *)aViewController invalidatingBarButtonItem:(UIBarButtonItem *)barButtonItem
+{
+    self.navigationItem.leftBarButtonItem = nil;
+}
+
+// this delegate method exists by default. I've included for clarity
+- (BOOL)splitViewController:(UISplitViewController *)svc shouldHideViewController:(UIViewController *)vc inOrientation:(UIInterfaceOrientation)orientation
+{
+    return UIInterfaceOrientationIsPortrait(orientation);
+}
 
 @end
