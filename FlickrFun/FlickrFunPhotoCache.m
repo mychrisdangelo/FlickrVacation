@@ -79,7 +79,6 @@
     
     // cleanup if over 10MB
     NSArray *directoryContents = [self.fileManager contentsOfDirectoryAtPath:self.dataPath error:nil];
-    NSLog(@"BEFORE %@", directoryContents);
     double directorySize = 0;
     NSString *oldestFilePath;
     for (NSString *each in directoryContents) {
@@ -88,9 +87,6 @@
         directorySize += [fileAttributes fileSize];
         oldestFilePath = [FlickrFunPhotoCache maxDate:self.dataPath lhs:each rhs:oldestFilePath];
     }
-    NSLog(@"directory size: %f vs %d", directorySize, TEN_MB);
-    NSLog(@"oldest filepath: %@", oldestFilePath);
-    
     if (directorySize > TEN_MB) {
         NSString *fileToDelete;
         fileToDelete = [self.dataPath stringByAppendingPathComponent:oldestFilePath];

@@ -10,7 +10,8 @@
 
 @interface FlickrFunPhotoCache : NSObject <UIApplicationDelegate>
 
-- (NSDictionary *)savePhotoToCache:(NSDictionary *)photo; // Flickr photo dictionary
+// saves photo if not already in cache. returns photo passed in if it already exists in cache
+- (NSDictionary *)savePhotoToCache:(NSDictionary *)photo; 
 - (UIImage *)getPhotoFromCache:(NSDictionary *)photo;
 
 @end
