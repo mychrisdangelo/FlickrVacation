@@ -27,12 +27,13 @@
     
     UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     [spinner startAnimating];
+    id tmpButton = self.navigationItem.rightBarButtonItem;
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:spinner];
     dispatch_queue_t downloadQueue = dispatch_queue_create("flickrDownloadPhotosFromPlace", NULL);
     dispatch_async(downloadQueue, ^{
         NSArray *photos = [FlickrFetcher photosInPlace:place maxResults:MAX_RESULTS];
         dispatch_async(dispatch_get_main_queue(), ^{
-            self.navigationItem.rightBarButtonItem = nil;
+            self.navigationItem.rightBarButtonItem = tmpButton;
             self.photos = photos;
         });
     });

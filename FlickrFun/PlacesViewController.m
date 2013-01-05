@@ -54,6 +54,7 @@
     
     UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     [spinner startAnimating];
+    id tmp = self.navigationItem.rightBarButtonItem;
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:spinner];
     
     dispatch_queue_t downloadQueue = dispatch_queue_create("flickrPlacesDownloader", NULL);
@@ -62,7 +63,7 @@
         NSSortDescriptor *placeDescriptor = [[NSSortDescriptor alloc] initWithKey:FLICKR_PLACE_NAME ascending:YES];
         NSArray *sortedArray = [myPlaces sortedArrayUsingDescriptors:[NSArray arrayWithObject:placeDescriptor]];
         dispatch_async(dispatch_get_main_queue(), ^{
-            self.navigationItem.rightBarButtonItem = nil;
+            self.navigationItem.rightBarButtonItem = tmp;
             self.topPlaces = sortedArray;
         });
     });
