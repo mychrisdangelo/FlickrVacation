@@ -82,6 +82,13 @@
 {
     [super viewDidLoad];
     [self loadPhoto];
+    
+}
+
+// unclear why this has to occure here instead of viewDidLoad.
+// suggested by http://ipadiphoneprogramming.blogspot.com/2012/04/assignment-4-part-4-ipad-split-view.html
+- (void)awakeFromNib
+{
     self.splitViewController.delegate = self;
 }
 
