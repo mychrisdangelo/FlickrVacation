@@ -8,6 +8,7 @@
 
 #import "PhotoTableViewController.h"
 #import "FlickrFetcher.h"
+#import "PhotoViewController.h"
 
 @interface PhotoTableViewController ()
 
@@ -156,6 +157,12 @@
     // add photo chosen to recent phots
     NSDictionary *photo = [self.photos objectAtIndex:indexPath.row];
     [PhotoTableViewController addToRecents:photo];
+    
+    id nc = [self.splitViewController.viewControllers lastObject];
+    id pvc = [nc topViewController];
+    if ([pvc isKindOfClass:[PhotoViewController class]])
+        [pvc setPhoto:[self.photos objectAtIndex:indexPath.row]];
+    
 }
 
 @end

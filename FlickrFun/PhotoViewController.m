@@ -25,14 +25,24 @@
 // photo will be set by prepareforSegue
 - (void)setPhoto:(NSDictionary *)photo
 {
-    _photo = photo;
-    self.title = [[PhotoTableViewController getPhotoName:photo] objectForKey:TITLE_KEY];
-    NSLog(@"setPhoto");
+    if(_photo != photo) {
+        _photo = photo;
+        self.title = [[PhotoTableViewController getPhotoName:photo] objectForKey:TITLE_KEY];
+        self.scrollView.zoomScale = 1;
+    }
+    
+    /*
+     * http://developer.apple.com/library/ios/#documentation/uikit/reference/UIView_Class/UIView/UIView.html#//apple_ref/occ/cl/UIView
+     * http://cs193p.m2m.at/assignment-4-task-9-addendum/#more-610
+     * imageView.window returns what it is embeded in. If something is returned then we are on screen
+     * and we can update the photo
+     */
+    if (self.imageView.window)
+        [self loadPhoto];
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-     NSLog(@"initWithNibName");
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
@@ -41,9 +51,8 @@
     
 }
 
-- (void)viewDidLoad
+- (void)loadPhoto
 {
-    [super viewDidLoad];
     // fetch the photo
     NSURL *photoURL = [FlickrFetcher urlForPhoto:self.photo format:FlickrPhotoFormatLarge];
     NSData *imageData = [NSData dataWithContentsOfURL:photoURL];
@@ -56,17 +65,18 @@
     
     // setup zooming
     self.scrollView.delegate = self;
-    NSLog(@"viewDidLoad");
-}
-
-// thanks to http://www.i4-apps.com/assignment-4-required-tasks/#more-676
-- (void)viewWillLayoutSubviews
-{
+    
     // zoom to appropriate size
     CGFloat zoomScaleX = (self.scrollView.bounds.size.width / self.imageView.image.size.width);
     CGFloat zoomScaleY = (self.scrollView.bounds.size.height / self.imageView.image.size.height);
     self.scrollView.zoomScale = MAX(zoomScaleX, zoomScaleY);
-    NSLog(@"viewWillLayoutSubViews");
+    [self.scrollView flashScrollIndicators];
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    [self loadPhoto];
 }
 
 /*

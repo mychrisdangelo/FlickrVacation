@@ -57,13 +57,7 @@
     
 }
 
- - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    [super tableView:tableView didSelectRowAtIndexPath:indexPath];
-    id nc = [self.splitViewController.viewControllers lastObject];
-    id pvc = [nc topViewController];
-    if ([pvc isKindOfClass:[PhotoViewController class]])
-        [pvc setPhoto:[self.photos objectAtIndex:indexPath.row]];
-}
+// using inherited method
+// - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 
 @end
