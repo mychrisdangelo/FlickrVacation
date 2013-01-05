@@ -17,6 +17,14 @@
 
 @synthesize topPlaces = _topPlaces;
 
+- (void)setTopPlaces:(NSArray *)topPlaces
+{
+    if (_topPlaces != topPlaces) {
+        _topPlaces = topPlaces;
+        [self.tableView reloadData];
+    }
+}
+
 + (NSString *)parseCityName:(NSDictionary *)place
 {
     NSString *fullPlace = [place objectForKey:FLICKR_PLACE_NAME];
@@ -43,17 +51,22 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
-    NSArray *myPlaces = [FlickrFetcher topPlaces];
-    NSSortDescriptor *placeDescriptor = [[NSSortDescriptor alloc] initWithKey:FLICKR_PLACE_NAME ascending:YES];
-    NSArray *sortedArray = [myPlaces sortedArrayUsingDescriptors:[NSArray arrayWithObject:placeDescriptor]];
-    self.topPlaces = sortedArray;
+    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    [spinner startAnimating];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:spinner];
+    
+    dispatch_queue_t downloadQueue = dispatch_queue_create("flickrPlacesDownloader", NULL);
+    dispatch_async(downloadQueue, ^{
+        NSArray *myPlaces = [FlickrFetcher topPlaces];
+        NSSortDescriptor *placeDescriptor = [[NSSortDescriptor alloc] initWithKey:FLICKR_PLACE_NAME ascending:YES];
+        NSArray *sortedArray = [myPlaces sortedArrayUsingDescriptors:[NSArray arrayWithObject:placeDescriptor]];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.navigationItem.rightBarButtonItem = nil;
+            self.topPlaces = sortedArray;
+        });
+    });
+    // dispatch_release(downloadQueue); // this received a error from the compiler. iOS 6 has reference cointing for this. remarkable.
 }
 
 - (void)didReceiveMemoryWarning

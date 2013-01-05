@@ -28,7 +28,6 @@
     if(_photo != photo) {
         _photo = photo;
         self.title = [[PhotoTableViewController getPhotoName:photo] objectForKey:TITLE_KEY];
-        self.scrollView.zoomScale = 1;
     }
     
     /*
@@ -61,21 +60,38 @@
 
 - (void)loadPhoto
 {
+    self.scrollView.zoomScale = 1; // reset from any last time
+    
+    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    [spinner setColor:[UIColor grayColor]];
+    [spinner startAnimating];
+    spinner.center = self.scrollView.center;
+    [spinner startAnimating];
+    [self.scrollView addSubview:spinner];
+    
     // fetch the photo
-    NSURL *photoURL = [FlickrFetcher urlForPhoto:self.photo format:FlickrPhotoFormatLarge];
-    NSData *imageData = [NSData dataWithContentsOfURL:photoURL];
-    UIImage *image = [UIImage imageWithData:imageData];
-    self.imageView.image = image;
-    
-    // setup scrolling
-    self.scrollView.contentSize = self.imageView.image.size;
-    self.imageView.frame = CGRectMake(0, 0, self.imageView.image.size.width, self.imageView.image.size.height);
-    
-    // setup zooming
-    self.scrollView.delegate = self;
-    
-    // zoom to appropriate size
-    [self zoomToFit];
+    dispatch_queue_t downloadQueue = dispatch_queue_create("flickrPhotoDownloader", NULL);
+    dispatch_async(downloadQueue, ^{
+        NSURL *photoURL = [FlickrFetcher urlForPhoto:self.photo format:FlickrPhotoFormatLarge];
+        NSData *imageData = [NSData dataWithContentsOfURL:photoURL];
+        UIImage *image = [UIImage imageWithData:imageData];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [spinner removeFromSuperview];
+            self.imageView.image = image;
+        
+            // setup scrolling
+            self.scrollView.contentSize = self.imageView.image.size;
+            self.imageView.frame = CGRectMake(0, 0, self.imageView.image.size.width, self.imageView.image.size.height);
+        
+            // setup zooming
+            self.scrollView.delegate = self;
+        
+            // zoom to appropriate size
+            [self zoomToFit];
+        });
+    });
+
+
 }
 
 - (void)viewDidLoad

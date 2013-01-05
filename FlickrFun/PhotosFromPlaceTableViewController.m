@@ -24,7 +24,18 @@
 {
     _place = place;
     self.title = [PlacesViewController parseCityName:place];
-    self.photos = [FlickrFetcher photosInPlace:place maxResults:MAX_RESULTS];
+    
+    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    [spinner startAnimating];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:spinner];
+    dispatch_queue_t downloadQueue = dispatch_queue_create("flickrDownloadPhotosFromPlace", NULL);
+    dispatch_async(downloadQueue, ^{
+        NSArray *photos = [FlickrFetcher photosInPlace:place maxResults:MAX_RESULTS];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.navigationItem.rightBarButtonItem = nil;
+            self.photos = photos;
+        });
+    });
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
