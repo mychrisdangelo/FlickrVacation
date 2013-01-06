@@ -8,6 +8,8 @@
 
 #import "MapViewController.h"
 #import "FlickrFetcher.h"
+#import "PhotoViewController.h"
+#import "FlickrPhotoAnnotation.h"
 
 @interface MapViewController() <MKMapViewDelegate>
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
@@ -55,13 +57,12 @@
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
 {
-    NSLog(@"function called");
     MKAnnotationView *aView = [mapView dequeueReusableAnnotationViewWithIdentifier:@"MapVC"];
     if (!aView) {
         aView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"MapVC"];
         aView.canShowCallout = YES;
         aView.leftCalloutAccessoryView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
-        // could put a rightCalloutAccessoryView here
+        aView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
     }
 
     aView.annotation = annotation;
@@ -84,7 +85,18 @@
 
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
 {
-    NSLog(@"callout accessory tapped for annotation %@", [view.annotation title]);
+    if ([view.annotation isKindOfClass:[FlickrPhotoAnnotation class]]) {
+        if (!self.splitViewController) {
+            PhotoViewController *pvc = [self.storyboard instantiateViewControllerWithIdentifier:@"PhotoView"];
+            pvc.photo = [(FlickrPhotoAnnotation *)view.annotation photo];
+            [self.navigationController pushViewController:pvc animated:YES];
+        } else {
+            id nc = [self.splitViewController.viewControllers lastObject];
+            id pvc = [nc topViewController];
+            if ([pvc isKindOfClass:[PhotoViewController class]])
+                [pvc setPhoto:[(FlickrPhotoAnnotation *)view.annotation photo]];
+        }
+    }
 }
 
 #pragma mark - View Controller Lifecycle

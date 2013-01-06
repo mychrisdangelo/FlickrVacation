@@ -119,7 +119,7 @@
             </objects>
             <point key="canvasLocation" x="1721" y="-6"/>
         </scene>
-        <!--Map View Controller-->
+        <!--Map View Controller - Map-->
         <scene sceneID="Ykp-ZV-tAl">
             <objects>
                 <viewController id="71P-yZ-JrQ" customClass="MapViewController" sceneMemberID="viewController">
@@ -134,7 +134,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="J5g-lO-bHI"/>
+                    <navigationItem key="navigationItem" title="Map" id="J5g-lO-bHI"/>
                     <connections>
                         <outlet property="mapView" destination="mJw-sd-n56" id="Llj-Hw-D2N"/>
                     </connections>
@@ -247,7 +247,7 @@
         <!--Photo View Controller - Photo-->
         <scene sceneID="wlE-ti-neF">
             <objects>
-                <viewController id="WuU-jb-LDk" customClass="PhotoViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PhotoView" id="WuU-jb-LDk" customClass="PhotoViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gf0-eE-ebp">
                         <rect key="frame" x="0.0" y="64" width="768" height="960"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
