@@ -77,7 +77,7 @@
 
 + (NSURL *)urlForPhoto:(NSDictionary *)photo format:(FlickrPhotoFormat)format
 {
-    // [NSThread sleepUntilDate:[NSDate dateWithTimeIntervalSinceNow:3]]; // simulating network slowdown
+    // [NSThread sleepUntilDate:[NSDate dateWithTimeIntervalSinceNow:5]]; // simulating network slowdown
     return [NSURL URLWithString:[self urlStringForPhoto:photo format:format]];
 }
 

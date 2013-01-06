@@ -1,9 +1,9 @@
 //
 //  MapViewController.h
-//  Shutterbug
+//  FlickrFun
 //
-//  Created by CS193p Instructor.
-//  Copyright (c) 2011 Stanford University. All rights reserved.
+//  Created by Chris D'Angelo on 1/2/13.
+//  Copyright (c) 2013 Chris D'Angelo. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

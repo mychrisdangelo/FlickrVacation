@@ -1,9 +1,9 @@
 //
 //  MapViewController.m
-//  Shutterbug
+//  FlickrFun
 //
-//  Created by CS193p Instructor.
-//  Copyright (c) 2011 Stanford University. All rights reserved.
+//  Created by Chris D'Angelo on 1/2/13.
+//  Copyright (c) 2013 Chris D'Angelo. All rights reserved.
 //
 
 #import "MapViewController.h"
@@ -52,8 +52,10 @@
 
 #pragma mark - MKMapViewDelegate
 
+
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
 {
+    NSLog(@"function called");
     MKAnnotationView *aView = [mapView dequeueReusableAnnotationViewWithIdentifier:@"MapVC"];
     if (!aView) {
         aView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"MapVC"];
@@ -67,11 +69,17 @@
     
     return aView;
 }
+ 
 
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)aView
 {
-    UIImage *image = [self.delegate mapViewController:self imageForAnnotation:aView.annotation];
-    [(UIImageView *)aView.leftCalloutAccessoryView setImage:image];
+    dispatch_queue_t downloadQueue = dispatch_queue_create("flickrThumbnailDownloader", NULL);
+    dispatch_async(downloadQueue, ^{
+        UIImage *image = [self.delegate mapViewController:self imageForAnnotation:aView.annotation];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [(UIImageView *)aView.leftCalloutAccessoryView setImage:image];
+        });
+    });
 }
 
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
@@ -85,6 +93,11 @@
 {
     [super viewDidLoad];
     self.mapView.delegate = self;
+    
+    // self.mapView.annotations may have been set in prepare for segue
+    // but the view has not loaded therefore mapView:viewForAnnotation: has not run
+    // therefore I am running updateMapView here
+    [self updateMapView];
 }
 
 - (void)viewDidUnload

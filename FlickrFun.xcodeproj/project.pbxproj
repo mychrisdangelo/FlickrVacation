@@ -13,6 +13,7 @@
 		403847BC169515AC00B70E2F /* PhotoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 403847BB169515AC00B70E2F /* PhotoTableViewController.m */; };
 		403847DE1695634200B70E2F /* PhotosFromPlaceTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 403847DD1695634100B70E2F /* PhotosFromPlaceTableViewController.m */; };
 		403847E516956A0C00B70E2F /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 403847E416956A0C00B70E2F /* PhotoViewController.m */; };
+		40611DBA169957BF00C6E49C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40611DB9169957BF00C6E49C /* CoreLocation.framework */; };
 		40C10A711694EAE700BF89DB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40C10A701694EAE700BF89DB /* UIKit.framework */; };
 		40C10A731694EAE700BF89DB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40C10A721694EAE700BF89DB /* Foundation.framework */; };
 		40C10A751694EAE700BF89DB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40C10A741694EAE700BF89DB /* CoreGraphics.framework */; };
@@ -43,6 +44,7 @@
 		403847DD1695634100B70E2F /* PhotosFromPlaceTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotosFromPlaceTableViewController.m; sourceTree = "<group>"; };
 		403847E316956A0C00B70E2F /* PhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoViewController.h; sourceTree = "<group>"; };
 		403847E416956A0C00B70E2F /* PhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoViewController.m; sourceTree = "<group>"; };
+		40611DB9169957BF00C6E49C /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		40C10A6C1694EAE700BF89DB /* FlickrFun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlickrFun.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		40C10A701694EAE700BF89DB /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		40C10A721694EAE700BF89DB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -73,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40611DBA169957BF00C6E49C /* CoreLocation.framework in Frameworks */,
 				40F059071698AB4D009C520B /* MapKit.framework in Frameworks */,
 				40C10A711694EAE700BF89DB /* UIKit.framework in Frameworks */,
 				40C10A731694EAE700BF89DB /* Foundation.framework in Frameworks */,
@@ -103,6 +106,7 @@
 		40C10A6F1694EAE700BF89DB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				40611DB9169957BF00C6E49C /* CoreLocation.framework */,
 				40F059061698AB4D009C520B /* MapKit.framework */,
 				40C10A701694EAE700BF89DB /* UIKit.framework */,
 				40C10A721694EAE700BF89DB /* Foundation.framework */,
