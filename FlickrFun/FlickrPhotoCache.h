@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface FlickrFunPhotoCache : NSObject <UIApplicationDelegate>
+@interface FlickrPhotoCache : NSObject <UIApplicationDelegate>
 
 // saves photo if not already in cache. returns photo passed in if it already exists in cache
 - (NSDictionary *)savePhotoToCache:(NSDictionary *)photo; 

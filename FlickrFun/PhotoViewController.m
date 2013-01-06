@@ -9,7 +9,7 @@
 #import "PhotoViewController.h"
 #import "FlickrFetcher.h"
 #import "PhotoTableViewController.h"
-#import "FlickrFunPhotoCache.h"
+#import "FlickrPhotoCache.h"
 
 @interface PhotoViewController () <UIScrollViewDelegate, UISplitViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
@@ -76,7 +76,7 @@
     dispatch_async(downloadQueue, ^{
         // check if file is in cache
         UIImage *image;
-        FlickrFunPhotoCache *cache = [[FlickrFunPhotoCache alloc] init];
+        FlickrPhotoCache *cache = [[FlickrPhotoCache alloc] init];
         [cache savePhotoToCache:self.photo];
         image = [cache getPhotoFromCache:self.photo];
         dispatch_async(dispatch_get_main_queue(), ^{

@@ -58,7 +58,7 @@
                     <navigationItem key="navigationItem" title="Featured Places" id="svw-YR-KAq">
                         <barButtonItem key="rightBarButtonItem" title="Map" id="wbg-98-zLc">
                             <connections>
-                                <segue destination="71P-yZ-JrQ" kind="push" id="NGz-o1-eKD"/>
+                                <segue destination="71P-yZ-JrQ" kind="push" identifier="ShowMap" id="NGz-o1-eKD"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -109,7 +109,7 @@
                     <navigationItem key="navigationItem" id="OGt-29-8p1">
                         <barButtonItem key="rightBarButtonItem" title="Map" id="zJK-0M-h80">
                             <connections>
-                                <segue destination="71P-yZ-JrQ" kind="push" id="MuB-Zr-H1J"/>
+                                <segue destination="71P-yZ-JrQ" kind="push" identifier="ShowMap" id="MuB-Zr-H1J"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -117,12 +117,12 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uqB-DQ-t9A" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1710" y="29"/>
+            <point key="canvasLocation" x="1721" y="-6"/>
         </scene>
-        <!--View Controller-->
+        <!--Map View Controller-->
         <scene sceneID="Ykp-ZV-tAl">
             <objects>
-                <viewController id="71P-yZ-JrQ" sceneMemberID="viewController">
+                <viewController id="71P-yZ-JrQ" customClass="MapViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NEP-fk-bDH">
                         <rect key="frame" x="0.0" y="64" width="320" height="739"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -135,6 +135,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="J5g-lO-bHI"/>
+                    <connections>
+                        <outlet property="mapView" destination="mJw-sd-n56" id="Llj-Hw-D2N"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jem-As-6r9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -194,7 +197,7 @@
                     <navigationItem key="navigationItem" title="Recently Viewed" id="ONS-wo-GMx">
                         <barButtonItem key="rightBarButtonItem" title="Map" id="9Zo-6n-V0s">
                             <connections>
-                                <segue destination="71P-yZ-JrQ" kind="push" id="Th5-nG-dbF"/>
+                                <segue destination="71P-yZ-JrQ" kind="push" identifier="ShowMap" id="Th5-nG-dbF"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -292,27 +295,6 @@
             <point key="canvasLocation" x="99" y="1187"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="PhotoTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PhotoTableViewController.h"/>
-        </class>
-        <class className="PhotoViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PhotoViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
-            </relationships>
-        </class>
-        <class className="PhotosFromPlaceTableViewController" superclassName="PhotoTableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PhotosFromPlaceTableViewController.h"/>
-        </class>
-        <class className="PhotosRecentTableViewController" superclassName="PhotoTableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PhotosRecentTableViewController.h"/>
-        </class>
-        <class className="PlacesViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PlacesViewController.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>

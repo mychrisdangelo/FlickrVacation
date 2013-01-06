@@ -6,19 +6,19 @@
 //  Copyright (c) 2013 Chris D'Angelo. All rights reserved.
 //
 
-#import "FlickrFunPhotoCache.h"
+#import "FlickrPhotoCache.h"
 #import "PhotoViewController.h"
 #import "FlickrFetcher.h"
 
 #define TEN_MB (1024*1024*10)
 #define FILE_EXTENSION @".tmp_photo"
 
-@interface FlickrFunPhotoCache()
+@interface FlickrPhotoCache()
 @property (nonatomic, strong) NSFileManager *fileManager;
 @property (nonatomic, strong) NSString *dataPath;
 @end
 
-@implementation FlickrFunPhotoCache
+@implementation FlickrPhotoCache
 
 @synthesize fileManager = _fileManager;
 @synthesize dataPath = _dataPath;
@@ -37,7 +37,7 @@
         NSLog(@"Error writing photo directory to cache");
 }
 
-- (FlickrFunPhotoCache *)init
+- (FlickrPhotoCache *)init
 {
     [self initCache];
     return self;
@@ -86,7 +86,7 @@
         NSString *eachPath = [self.dataPath stringByAppendingPathComponent:each];
         NSDictionary *fileAttributes = [self.fileManager attributesOfItemAtPath:eachPath error:nil];
         directorySize += [fileAttributes fileSize];
-        oldestFilePath = [FlickrFunPhotoCache maxDate:self.dataPath lhs:each rhs:oldestFilePath];
+        oldestFilePath = [FlickrPhotoCache maxDate:self.dataPath lhs:each rhs:oldestFilePath];
     }
     if (directorySize > TEN_MB) {
         NSString *fileToDelete;

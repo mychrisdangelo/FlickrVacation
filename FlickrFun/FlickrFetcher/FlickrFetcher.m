@@ -14,7 +14,7 @@
 
 + (NSDictionary *)executeFlickrFetch:(NSString *)query
 {
-    [NSThread sleepUntilDate:[NSDate dateWithTimeIntervalSinceNow:2]]; // simulating network slowdown
+    // [NSThread sleepUntilDate:[NSDate dateWithTimeIntervalSinceNow:2]]; // simulating network slowdown
     query = [NSString stringWithFormat:@"%@&format=json&nojsoncallback=1&api_key=%@", query, FlickrAPIKey];
     query = [query stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     // NSLog(@"[%@ %@] sent %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), query);

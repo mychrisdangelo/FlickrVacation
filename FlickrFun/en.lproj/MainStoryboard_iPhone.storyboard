@@ -44,7 +44,7 @@
                     <navigationItem key="navigationItem" title="Featured Places" id="Vx8-4Z-S3b">
                         <barButtonItem key="rightBarButtonItem" title="Map" id="veM-Pm-VAm">
                             <connections>
-                                <segue destination="DCL-FT-KpP" kind="push" id="ha2-vr-wxo"/>
+                                <segue destination="DCL-FT-KpP" kind="push" identifier="ShowMap" id="ha2-vr-wxo"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -97,7 +97,7 @@
                     <navigationItem key="navigationItem" id="CDA-P5-TJT">
                         <barButtonItem key="rightBarButtonItem" title="Map" id="3cr-vE-D3X">
                             <connections>
-                                <segue destination="DCL-FT-KpP" kind="push" id="p2d-P1-UgR"/>
+                                <segue destination="DCL-FT-KpP" kind="push" identifier="ShowMap" id="p2d-P1-UgR"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -177,7 +177,7 @@
                     <navigationItem key="navigationItem" title="Recently Viewed" id="V7G-tb-Odw">
                         <barButtonItem key="rightBarButtonItem" title="Map" id="WTE-ki-Yd9">
                             <connections>
-                                <segue destination="DCL-FT-KpP" kind="push" id="607-xS-86p"/>
+                                <segue destination="DCL-FT-KpP" kind="push" identifier="ShowMap" id="607-xS-86p"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -237,10 +237,10 @@
             </objects>
             <point key="canvasLocation" x="-167" y="-338"/>
         </scene>
-        <!--View Controller-->
+        <!--Map View Controller-->
         <scene sceneID="eq1-o7-Tz3">
             <objects>
-                <viewController id="DCL-FT-KpP" sceneMemberID="viewController">
+                <viewController id="DCL-FT-KpP" customClass="MapViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oKT-kR-zzu">
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -249,18 +249,33 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </mapView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="uGR-os-d5q">
+                                <rect key="frame" x="35" y="164" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="UDK-1G-5OQ"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                    <connections>
+                        <outlet property="mapView" destination="p6F-Pr-a51" id="O4p-rz-9JR"/>
+                        <outlet property="testimage" destination="uGR-os-d5q" id="SKQ-nP-yNp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tLe-1I-mbz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1959" y="-481"/>
+            <point key="canvasLocation" x="1880" y="-593"/>
         </scene>
     </scenes>
     <classes>
+        <class className="MapViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MapViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
+                <relationship kind="outlet" name="testimage" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
         <class className="PhotoTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PhotoTableViewController.h"/>
         </class>
@@ -287,7 +302,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="ha2-vr-wxo"/>
         <segue reference="qPg-vd-dYo"/>
-        <segue reference="p2d-P1-UgR"/>
     </inferredMetricsTieBreakers>
 </document>
