@@ -10,6 +10,7 @@
 #import "PhotosFromPlaceTableViewController.h"
 #import "PhotoViewController.h"
 
+
 @interface PhotosRecentTableViewController ()
 
 @end
@@ -48,6 +49,7 @@
         NSDictionary *photo = [self.photos objectAtIndex:[self.tableView indexPathForCell:sender].row];
         [segue.destinationViewController setPhoto:photo];
     }
+    
     
 }
 

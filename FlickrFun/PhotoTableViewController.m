@@ -9,8 +9,10 @@
 #import "PhotoTableViewController.h"
 #import "FlickrFetcher.h"
 #import "PhotoViewController.h"
+#import "MapViewController.h"
+#import "FlickrPhotoAnnotation.h"
 
-@interface PhotoTableViewController ()
+@interface PhotoTableViewController () <MapViewControllerDelegate>
 
 @end
 
@@ -130,6 +132,32 @@
 }
 */
 
+- (NSArray *)mapAnnotations
+{
+    NSMutableArray *annotations = [NSMutableArray arrayWithCapacity:[self.photos count]];
+    for (NSDictionary *photo in self.photos) {
+        [annotations addObject:[FlickrPhotoAnnotation annotationForPhoto:photo]];
+    }
+    return annotations;
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"ShowPhoto"]) {
+        NSDictionary *photo = [self.photos objectAtIndex:[self.tableView indexPathForCell:sender].row];
+        [segue.destinationViewController setPhoto:photo];
+    }
+    
+    if ([segue.identifier isEqualToString:@"ShowMap"]) {
+        id destination = segue.destinationViewController;
+        if ([destination isKindOfClass:[MapViewController class]]) {
+            MapViewController *mapVC = (MapViewController *)destination;
+            mapVC.delegate = self;
+            mapVC.annotations = [self mapAnnotations];
+        }
+    }
+}
+
 #define MAX_RECENTS 20
 + (void)addToRecents:(NSDictionary *)photo
 {
@@ -163,6 +191,17 @@
     if ([pvc isKindOfClass:[PhotoViewController class]])
         [pvc setPhoto:[self.photos objectAtIndex:indexPath.row]];
     
+}
+
+#pragma mark - MapViewControllerDelegate
+
+- (UIImage *)mapViewController:(MapViewController *)sender imageForAnnotation:(id <MKAnnotation>)annotation
+{
+    FlickrPhotoAnnotation *fpa = (FlickrPhotoAnnotation *)annotation;
+    NSURL *url = [FlickrFetcher urlForPhoto:fpa.photo format:FlickrPhotoFormatSquare];
+    NSData *data = [NSData dataWithContentsOfURL:url];
+    NSLog(@"PhotosFromPlace: calling dataWithContentsOfURL");
+    return data ? [UIImage imageWithData:data] : nil;
 }
 
 @end

@@ -11,7 +11,6 @@
 
 @interface MapViewController() <MKMapViewDelegate>
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
-@property (weak, nonatomic) IBOutlet UIImageView *testimage;
 
 @end
 
@@ -20,7 +19,6 @@
 @synthesize mapView = _mapView;
 @synthesize annotations = _annotations;
 @synthesize delegate = _delegate;
-@synthesize testimage = _testimage;
 
 #pragma mark - Synchronize Model and View
 
@@ -74,7 +72,6 @@
 {
     UIImage *image = [self.delegate mapViewController:self imageForAnnotation:aView.annotation];
     [(UIImageView *)aView.leftCalloutAccessoryView setImage:image];
-    self.testimage.image = image;
 }
 
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
