@@ -58,6 +58,27 @@
     [self.scrollView flashScrollIndicators];
 }
 
+
+#define MAX_RECENTS 20
++ (void)addToRecents:(NSDictionary *)photo
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSMutableArray *recents = [[defaults objectForKey:RECENTS_KEY] mutableCopy];
+    if (!recents) recents = [NSMutableArray array];
+    NSDictionary *each;
+    for (int i = 0; i < [recents count]; i++) {
+        each = [recents objectAtIndex:i];
+        if ([[each objectForKey:FLICKR_PHOTO_ID] isEqualToString:[photo objectForKey:FLICKR_PHOTO_ID]]) {
+            [recents removeObjectAtIndex:i];
+            break;
+        }
+    }
+    if ([recents count] >= MAX_RECENTS) [recents removeLastObject];
+    [recents insertObject:photo atIndex:0];
+    [defaults setObject:recents forKey:RECENTS_KEY];
+    [defaults synchronize];
+}
+
 - (void)loadPhoto
 {
 
@@ -79,6 +100,7 @@
         FlickrPhotoCache *cache = [[FlickrPhotoCache alloc] init];
         [cache savePhotoToCache:self.photo];
         image = [cache getPhotoFromCache:self.photo];
+        [PhotoViewController addToRecents:self.photo];
         dispatch_async(dispatch_get_main_queue(), ^{
             [spinner removeFromSuperview];
             self.imageView.image = image;
@@ -102,7 +124,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self loadPhoto];
+    if (self.photo) [self loadPhoto];
 }
 
 // unclear why this has to occure here instead of viewDidLoad.

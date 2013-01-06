@@ -9,6 +9,8 @@
 #import "PlacesViewController.h"
 #import "FlickrFetcher.h"
 #import "PhotosFromPlaceTableViewController.h"
+#import "MapViewController.h"
+#import "FlickrPlaceAnnotation.h"
 
 @interface PlacesViewController ()
 @end
@@ -48,10 +50,8 @@
     return self;
 }
 
-- (void)viewDidLoad
+- (void)updateTable
 {
-    [super viewDidLoad];
-    
     UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     [spinner startAnimating];
     id tmp = self.navigationItem.rightBarButtonItem;
@@ -65,15 +65,37 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             self.navigationItem.rightBarButtonItem = tmp;
             self.topPlaces = sortedArray;
+            [self.refreshControl endRefreshing];
         });
     });
     // dispatch_release(downloadQueue); // this received a error from the compiler. iOS 6 has reference cointing for this. remarkable.
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    [self updateTable];
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc]
+                                        init];
+
+    [refreshControl addTarget:self action:@selector(updateTable) forControlEvents:UIControlEventValueChanged];
+    self.refreshControl = refreshControl;
+    
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (NSArray *)mapAnnotations
+{
+    NSMutableArray *annotations = [NSMutableArray arrayWithCapacity:[self.topPlaces count]];
+    for (NSDictionary *place in self.topPlaces) {
+        [annotations addObject:[FlickrPlaceAnnotation annotationForPlace:place]];
+    }
+    return annotations;
 }
 
 #pragma mark - Table view data source
@@ -99,6 +121,14 @@
     if ([segue.identifier isEqualToString:@"ShowPhotoList"]) {
         NSDictionary *place = [self.topPlaces objectAtIndex:[self.tableView indexPathForCell:sender].row];
         [segue.destinationViewController setPlace:place];
+    }
+    
+    if ([segue.identifier isEqualToString:@"ShowMap"]) {
+        id destination = segue.destinationViewController;
+        if ([destination isKindOfClass:[MapViewController class]]) {
+            MapViewController *mapVC = (MapViewController *)destination;
+            mapVC.annotations = [self mapAnnotations];
+        }
     }
 }
 

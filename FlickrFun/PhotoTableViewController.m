@@ -158,34 +158,10 @@
     }
 }
 
-#define MAX_RECENTS 20
-+ (void)addToRecents:(NSDictionary *)photo
-{
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSMutableArray *recents = [[defaults objectForKey:RECENTS_KEY] mutableCopy];
-    if (!recents) recents = [NSMutableArray array];
-    NSDictionary *each;
-    for (int i = 0; i < [recents count]; i++) {
-        each = [recents objectAtIndex:i];
-        if ([[each objectForKey:FLICKR_PHOTO_ID] isEqualToString:[photo objectForKey:FLICKR_PHOTO_ID]]) {
-            [recents removeObjectAtIndex:i];
-            break;
-        }
-    }
-    if ([recents count] >= MAX_RECENTS) [recents removeLastObject];
-    [recents insertObject:photo atIndex:0];
-    [defaults setObject:recents forKey:RECENTS_KEY];
-    [defaults synchronize];
-}
-
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // add photo chosen to recent phots
-    NSDictionary *photo = [self.photos objectAtIndex:indexPath.row];
-    [PhotoTableViewController addToRecents:photo];
-    
     id nc = [self.splitViewController.viewControllers lastObject];
     id pvc = [nc topViewController];
     if ([pvc isKindOfClass:[PhotoViewController class]])
