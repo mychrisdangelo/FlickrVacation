@@ -56,7 +56,7 @@
         <!--Photos From Place Table View Controller-->
         <scene sceneID="4Xe-j5-O6K">
             <objects>
-                <tableViewController id="G3K-kG-XaD" customClass="PhotosFromPlaceTableViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="Photos From Place" id="G3K-kG-XaD" customClass="PhotosFromPlaceTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Eqf-ZD-ZbF">
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -269,7 +269,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="ha2-vr-wxo"/>
+        <segue reference="p2d-P1-UgR"/>
         <segue reference="qPg-vd-dYo"/>
     </inferredMetricsTieBreakers>
 </document>
