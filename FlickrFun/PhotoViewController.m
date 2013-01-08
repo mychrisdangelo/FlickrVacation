@@ -81,8 +81,6 @@
 
 - (void)loadPhoto
 {
-
-    
     UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
     [spinner setColor:[UIColor blackColor]];
     [spinner startAnimating];
