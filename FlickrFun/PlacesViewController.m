@@ -50,6 +50,7 @@
     return self;
 }
 
+
 - (void)updateTable
 {
     UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];

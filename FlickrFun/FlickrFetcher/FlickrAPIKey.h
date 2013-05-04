@@ -9,4 +9,4 @@
 //
 
 
-#define FlickrAPIKey @""
+#define FlickrAPIKey @"688f2d5f2b34d9a6b7c28ef3336570fe"
