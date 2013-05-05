@@ -67,14 +67,14 @@
 		40611DB9169957BF00C6E49C /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		4063746B169BA52D008F3B62 /* FlickrPlaceAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrPlaceAnnotation.h; sourceTree = "<group>"; };
 		4063746C169BA52D008F3B62 /* FlickrPlaceAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrPlaceAnnotation.m; sourceTree = "<group>"; };
-		40C10A6C1694EAE700BF89DB /* FlickrFun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlickrFun.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		40C10A6C1694EAE700BF89DB /* FlickrVacation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlickrVacation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		40C10A701694EAE700BF89DB /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		40C10A721694EAE700BF89DB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		40C10A741694EAE700BF89DB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		40C10A781694EAE700BF89DB /* FlickrFun-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FlickrFun-Info.plist"; sourceTree = "<group>"; };
+		40C10A781694EAE700BF89DB /* FlickrVacation-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FlickrVacation-Info.plist"; sourceTree = "<group>"; };
 		40C10A7A1694EAE700BF89DB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		40C10A7C1694EAE700BF89DB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		40C10A7E1694EAE700BF89DB /* FlickrFun-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FlickrFun-Prefix.pch"; sourceTree = "<group>"; };
+		40C10A7E1694EAE700BF89DB /* FlickrVacation-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FlickrVacation-Prefix.pch"; sourceTree = "<group>"; };
 		40C10A7F1694EAE700BF89DB /* FlickrFunAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlickrFunAppDelegate.h; sourceTree = "<group>"; };
 		40C10A801694EAE700BF89DB /* FlickrFunAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlickrFunAppDelegate.m; sourceTree = "<group>"; };
 		40C10A821694EAE700BF89DB /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
@@ -142,7 +142,7 @@
 		40C10A6D1694EAE700BF89DB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				40C10A6C1694EAE700BF89DB /* FlickrFun.app */,
+				40C10A6C1694EAE700BF89DB /* FlickrVacation.app */,
 			);
 			name = Products;
 			path = ..;
@@ -198,10 +198,10 @@
 			children = (
 				40C10A7F1694EAE700BF89DB /* FlickrFunAppDelegate.h */,
 				40C10A801694EAE700BF89DB /* FlickrFunAppDelegate.m */,
-				40C10A781694EAE700BF89DB /* FlickrFun-Info.plist */,
+				40C10A781694EAE700BF89DB /* FlickrVacation-Info.plist */,
 				40C10A791694EAE700BF89DB /* InfoPlist.strings */,
 				40C10A7C1694EAE700BF89DB /* main.m */,
-				40C10A7E1694EAE700BF89DB /* FlickrFun-Prefix.pch */,
+				40C10A7E1694EAE700BF89DB /* FlickrVacation-Prefix.pch */,
 				40C10A821694EAE700BF89DB /* Default.png */,
 				40C10A841694EAE700BF89DB /* Default@2x.png */,
 				40C10A861694EAE700BF89DB /* Default-568h@2x.png */,
@@ -212,9 +212,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		40C10A6B1694EAE700BF89DB /* FlickrFun */ = {
+		40C10A6B1694EAE700BF89DB /* FlickrVacation */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 40C10A931694EAE700BF89DB /* Build configuration list for PBXNativeTarget "FlickrFun" */;
+			buildConfigurationList = 40C10A931694EAE700BF89DB /* Build configuration list for PBXNativeTarget "FlickrVacation" */;
 			buildPhases = (
 				40C10A681694EAE700BF89DB /* Sources */,
 				40C10A691694EAE700BF89DB /* Frameworks */,
@@ -224,9 +224,9 @@
 			);
 			dependencies = (
 			);
-			name = FlickrFun;
+			name = FlickrVacation;
 			productName = FlickrFun;
-			productReference = 40C10A6C1694EAE700BF89DB /* FlickrFun.app */;
+			productReference = 40C10A6C1694EAE700BF89DB /* FlickrVacation.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -239,7 +239,7 @@
 				LastUpgradeCheck = 0450;
 				ORGANIZATIONNAME = "Chris D'Angelo";
 			};
-			buildConfigurationList = 40C10A661694EAE700BF89DB /* Build configuration list for PBXProject "FlickrFun" */;
+			buildConfigurationList = 40C10A661694EAE700BF89DB /* Build configuration list for PBXProject "FlickrVacation" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -251,7 +251,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				40C10A6B1694EAE700BF89DB /* FlickrFun */,
+				40C10A6B1694EAE700BF89DB /* FlickrVacation */,
 			);
 		};
 /* End PBXProject section */
@@ -387,10 +387,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "FlickrFun/FlickrFun-Prefix.pch";
-				INFOPLIST_FILE = "FlickrFun/FlickrFun-Info.plist";
+				GCC_PREFIX_HEADER = "FlickrFun/FlickrVacation-Prefix.pch";
+				INFOPLIST_FILE = "FlickrFun/FlickrVacation-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = FlickrVacation;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -399,10 +399,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "FlickrFun/FlickrFun-Prefix.pch";
-				INFOPLIST_FILE = "FlickrFun/FlickrFun-Info.plist";
+				GCC_PREFIX_HEADER = "FlickrFun/FlickrVacation-Prefix.pch";
+				INFOPLIST_FILE = "FlickrFun/FlickrVacation-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = FlickrVacation;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -410,7 +410,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		40C10A661694EAE700BF89DB /* Build configuration list for PBXProject "FlickrFun" */ = {
+		40C10A661694EAE700BF89DB /* Build configuration list for PBXProject "FlickrVacation" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				40C10A911694EAE700BF89DB /* Debug */,
@@ -419,7 +419,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		40C10A931694EAE700BF89DB /* Build configuration list for PBXNativeTarget "FlickrFun" */ = {
+		40C10A931694EAE700BF89DB /* Build configuration list for PBXNativeTarget "FlickrVacation" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				40C10A941694EAE700BF89DB /* Debug */,
