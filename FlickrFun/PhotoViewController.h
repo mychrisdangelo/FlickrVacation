@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FlickrFetcher.h"
+#import "PhotoTableViewController.h"
+#import "FlickrPhotoCache.h"
 
 @interface PhotoViewController : UIViewController
 @property (strong, nonatomic) NSDictionary *photo;
+
 @end

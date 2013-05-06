@@ -7,9 +7,7 @@
 //
 
 #import "PhotoViewController.h"
-#import "FlickrFetcher.h"
-#import "PhotoTableViewController.h"
-#import "FlickrPhotoCache.h"
+
 
 @interface PhotoViewController () <UIScrollViewDelegate, UISplitViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;

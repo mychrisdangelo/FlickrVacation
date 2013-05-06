@@ -53,16 +53,16 @@
             </objects>
             <point key="canvasLocation" x="953" y="20"/>
         </scene>
-        <!--Vacations Table View Controller - Vacations-->
+        <!--Vacation Table View Controller - Vacations-->
         <scene sceneID="d4o-rV-6xF">
             <objects>
-                <tableViewController id="i6i-aj-zdL" customClass="VacationsTableViewController" sceneMemberID="viewController">
+                <tableViewController id="i6i-aj-zdL" customClass="VacationTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="jfl-NS-czC">
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="1u4-Vf-G4x" style="IBUITableViewCellStyleDefault" id="ltu-Y0-rWt">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="VacationCell" textLabel="1u4-Vf-G4x" style="IBUITableViewCellStyleDefault" id="ltu-Y0-rWt">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -100,7 +100,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="ty4-NF-N1p" style="IBUITableViewCellStyleDefault" id="qhp-An-9eF">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ItineraryPusherCell" textLabel="ty4-NF-N1p" style="IBUITableViewCellStyleDefault" id="qhp-An-9eF">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -121,10 +121,10 @@
                                     <accessibilityTraits key="traits" none="YES" staticText="YES"/>
                                 </accessibility>
                                 <connections>
-                                    <segue destination="47R-6n-piA" kind="push" id="L4n-oP-Z4e"/>
+                                    <segue destination="47R-6n-piA" kind="push" identifier="ItinerarySegue" id="L4n-oP-Z4e"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="Oux-SM-MaS" style="IBUITableViewCellStyleDefault" id="rEO-bu-w3m">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SearchTagPusherCell" textLabel="Oux-SM-MaS" style="IBUITableViewCellStyleDefault" id="rEO-bu-w3m">
                                 <rect key="frame" x="0.0" y="66" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -145,7 +145,7 @@
                                     <accessibilityTraits key="traits" none="YES" staticText="YES"/>
                                 </accessibility>
                                 <connections>
-                                    <segue destination="NBl-Po-pvF" kind="push" id="duG-py-Qn6"/>
+                                    <segue destination="NBl-Po-pvF" kind="push" identifier="SearchTagSegue" id="duG-py-Qn6"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -169,7 +169,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="gs5-n0-S2p" style="IBUITableViewCellStyleDefault" id="DaW-LG-Lyg">
+                            <tableViewCell contentMode="scaleToFill" restorationIdentifier="Itinerary Cell" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ItineraryCell" textLabel="gs5-n0-S2p" style="IBUITableViewCellStyleDefault" id="DaW-LG-Lyg">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -211,14 +211,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="2Wn-U2-dAT" style="IBUITableViewCellStyleDefault" id="ocS-4y-UDl">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SearchTagCell" textLabel="2Wn-U2-dAT" style="IBUITableViewCellStyleDefault" id="ocS-4y-UDl">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="300" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2Wn-U2-dAT">
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" restorationIdentifier="SearchTagCell" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2Wn-U2-dAT">
                                             <rect key="frame" x="10" y="0.0" width="280" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
@@ -242,7 +242,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V2H-Zy-1AO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1901" y="1187"/>
+            <point key="canvasLocation" x="1880" y="1206"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Icn-3y-BcY">
@@ -314,10 +314,10 @@
             </objects>
             <point key="canvasLocation" x="1412" y="25"/>
         </scene>
-        <!--Photo View Controller-->
+        <!--Vacation Photo View Controller-->
         <scene sceneID="68n-Md-VCM">
             <objects>
-                <viewController storyboardIdentifier="PhotoView" id="nda-S3-smX" customClass="PhotoViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PhotoView" id="nda-S3-smX" customClass="VacationPhotoViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="V46-de-Dtr">
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -335,10 +335,17 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="iRG-gt-oyZ"/>
+                    <navigationItem key="navigationItem" id="iRG-gt-oyZ">
+                        <barButtonItem key="rightBarButtonItem" title="Visit" id="LME-pm-TjL">
+                            <connections>
+                                <action selector="pressedVisitButton:" destination="nda-S3-smX" id="OCk-4H-w9m"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="imageView" destination="Qbd-ka-aaK" id="rUn-CU-Ip7"/>
                         <outlet property="scrollView" destination="iqP-yk-D9V" id="81d-Rt-vM6"/>
+                        <outlet property="visitButton" destination="LME-pm-TjL" id="v8G-pM-mMA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g9Q-0W-qjN" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -478,7 +485,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="p2d-P1-UgR"/>
-        <segue reference="L1h-v2-ytz"/>
+        <segue reference="2dg-cT-aJm"/>
+        <segue reference="ha2-vr-wxo"/>
     </inferredMetricsTieBreakers>
 </document>
