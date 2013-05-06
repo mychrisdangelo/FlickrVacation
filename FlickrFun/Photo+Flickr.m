@@ -33,7 +33,9 @@
         photo.title = [flickrInfo objectForKey:FLICKR_PHOTO_TITLE];
         photo.subtitle = [flickrInfo valueForKeyPath:FLICKR_PHOTO_DESCRIPTION];
         photo.imageURL = [[FlickrFetcher urlForPhoto:flickrInfo format:FlickrPhotoFormatLarge] absoluteString];
-#warning need to create place attached to photo here
+        
+        // add place for photograph
+        photo.tookWhere = [Place placeWithName:[flickrInfo objectForKey:FLICKR_PHOTO_PLACE_NAME] inManagedObjectContext:context];
     } else {
         NSLog(@"already added this before");
         photo = [matches lastObject];
@@ -64,7 +66,7 @@
         NSLog(@"removing photo");
         photo = [matches lastObject];
         [context deleteObject:photo];
-#warning need to place link?
+#warning may need to delete link but maybe coredata is handling it
     }
     
     return photo;

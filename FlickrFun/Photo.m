@@ -2,7 +2,7 @@
 //  Photo.m
 //  FlickrVacation
 //
-//  Created by Chris D'Angelo on 5/5/13.
+//  Created by Chris D'Angelo on 5/6/13.
 //  Copyright (c) 2013 Chris D'Angelo. All rights reserved.
 //
 
@@ -18,6 +18,6 @@
 @dynamic subtitle;
 @dynamic title;
 @dynamic taggedWith;
-@dynamic takeAtLocation;
+@dynamic tookWhere;
 
 @end

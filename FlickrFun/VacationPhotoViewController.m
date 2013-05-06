@@ -59,7 +59,7 @@
             // should probably saveToURL:forSaveOperation:(UIDocumentSaveForOverwriting)completionHandler: here!
             // we could decide to rely on UIManagedDocument's autosaving, but explicit saving would be better
             // because if we quit the app before autosave happens, then it'll come up blank next time we run
-            [vacation saveToURL:vacation.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:NULL];
+            [vacation saveToURL:vacation.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:NULL];            
         }];
     } else {
         sender.title = @"Visit";

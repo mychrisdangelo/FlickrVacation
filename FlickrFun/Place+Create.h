@@ -1,5 +1,5 @@
 //
-//  Place.m
+//  Place+Create.h
 //  FlickrVacation
 //
 //  Created by Chris D'Angelo on 5/6/13.
@@ -7,12 +7,9 @@
 //
 
 #import "Place.h"
-#import "Photo.h"
 
+@interface Place (Create)
 
-@implementation Place
-
-@dynamic name;
-@dynamic photosHere;
++ (Place *)placeWithName:(NSString *)name inManagedObjectContext:(NSManagedObjectContext *)context;
 
 @end

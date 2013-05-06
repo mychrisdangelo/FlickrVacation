@@ -2,7 +2,7 @@
 //  Photo.h
 //  FlickrVacation
 //
-//  Created by Chris D'Angelo on 5/5/13.
+//  Created by Chris D'Angelo on 5/6/13.
 //  Copyright (c) 2013 Chris D'Angelo. All rights reserved.
 //
 
@@ -18,7 +18,7 @@
 @property (nonatomic, retain) NSString * subtitle;
 @property (nonatomic, retain) NSString * title;
 @property (nonatomic, retain) NSSet *taggedWith;
-@property (nonatomic, retain) Place *takeAtLocation;
+@property (nonatomic, retain) Place *tookWhere;
 @end
 
 @interface Photo (CoreDataGeneratedAccessors)

@@ -9,6 +9,7 @@
 #import "Photo.h"
 #import "FlickrFetcher.h"
 #import "VacationHelper.h"
+#import "Place+Create.h"
 
 @interface Photo (Flickr)
 
