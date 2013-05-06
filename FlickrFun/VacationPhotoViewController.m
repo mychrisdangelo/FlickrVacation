@@ -14,12 +14,10 @@
 
 @implementation VacationPhotoViewController
 
-@synthesize visitButton = _visitButton;
-
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
+
     [VacationHelper openVacation:MY_VACATION usingBlock: ^(UIManagedDocument *vacation){
         [self checkPhotoVisited:vacation];
     }];
@@ -36,14 +34,19 @@
         NSError *error = nil;
         NSArray *matches = [vacation.managedObjectContext executeFetchRequest:request error:&error];
         
+        NSString *visitOrUnvisit = nil;
+        
         if (!matches || ([matches count] > 1)) {
             // handle error
             NSLog(@"checkPhotoVisited: (!matches || ([matches count] > 1))");
         } else if ([matches count] == 0) {
-            self.visitButton.title = @"Visit";
+            visitOrUnvisit = @"Visit";
         } else {
-            self.visitButton.title = @"Unvisit";
+            visitOrUnvisit = @"Unvisit";
         }
+        
+        UIBarButtonItem *visitButton = [[UIBarButtonItem alloc] initWithTitle:visitOrUnvisit style:UIBarButtonItemStylePlain target:self action:@selector(pressedVisitButton:)];
+        self.navigationItem.rightBarButtonItem = visitButton;
     }];
 }
 

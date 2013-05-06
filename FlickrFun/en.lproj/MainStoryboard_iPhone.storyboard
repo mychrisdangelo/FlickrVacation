@@ -335,17 +335,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="iRG-gt-oyZ">
-                        <barButtonItem key="rightBarButtonItem" title="Visit" id="LME-pm-TjL">
-                            <connections>
-                                <action selector="pressedVisitButton:" destination="nda-S3-smX" id="OCk-4H-w9m"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="iRG-gt-oyZ"/>
                     <connections>
                         <outlet property="imageView" destination="Qbd-ka-aaK" id="rUn-CU-Ip7"/>
                         <outlet property="scrollView" destination="iqP-yk-D9V" id="81d-Rt-vM6"/>
-                        <outlet property="visitButton" destination="LME-pm-TjL" id="v8G-pM-mMA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g9Q-0W-qjN" userLabel="First Responder" sceneMemberID="firstResponder"/>

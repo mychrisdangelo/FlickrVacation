@@ -13,6 +13,5 @@
 #define MY_VACATION @"My Vacation"
 
 @interface VacationPhotoViewController : PhotoViewController
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *visitButton;
 
 @end
