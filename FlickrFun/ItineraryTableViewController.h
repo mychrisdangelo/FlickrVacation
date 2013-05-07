@@ -7,6 +7,8 @@
 //
 
 #import "CoreDataTableViewController.h"
+#import "VacationHelper.h"
+#import "Place.h"
 
 @interface ItineraryTableViewController : CoreDataTableViewController
 
