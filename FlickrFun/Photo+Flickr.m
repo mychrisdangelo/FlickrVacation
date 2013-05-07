@@ -27,7 +27,6 @@
         // handle error
         NSLog(@"addPhotoWithFlickrInfo: (!matches || ([matches count] > 1))");
     } else if ([matches count] == 0) {
-        NSLog(@"adding for the first time");
         photo = [NSEntityDescription insertNewObjectForEntityForName:@"Photo" inManagedObjectContext:context];
         photo.photoID = [flickrInfo objectForKey:FLICKR_PHOTO_ID];
         photo.title = [flickrInfo objectForKey:FLICKR_PHOTO_TITLE];
@@ -37,7 +36,6 @@
         // add place for photograph
         photo.tookWhere = [Place placeWithName:[flickrInfo objectForKey:FLICKR_PHOTO_PLACE_NAME] inManagedObjectContext:context];
     } else {
-        NSLog(@"already added this before");
         photo = [matches lastObject];
     }
     
@@ -61,9 +59,8 @@
         // handle error
         NSLog(@"removePhotoWithFlickrInfo: (!matches || ([matches count] > 1))");
     } else if ([matches count] == 0) {
-        NSLog(@"nothing to remove");
+        // nothing to remove
     } else {
-        NSLog(@"removing photo");
         photo = [matches lastObject];
         [context deleteObject:photo];
 #warning may need to delete link but maybe coredata is handling it

@@ -233,7 +233,7 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <connections>
-                                    <segue destination="nda-S3-smX" kind="push" id="Pbw-aL-yps"/>
+                                    <segue destination="nda-S3-smX" kind="push" identifier="ShowPhoto" id="Pbw-aL-yps"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

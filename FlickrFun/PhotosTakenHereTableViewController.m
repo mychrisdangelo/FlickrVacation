@@ -19,8 +19,6 @@
 
 - (void)setPlace:(Place *)place withVacation:(NSString *)vacation
 {
-    NSLog(@"received vacation = %@", vacation);
-    NSLog(@"received place = %@", place.name);
     if (_vacation != vacation) {
         _vacation = vacation;
     }
@@ -42,10 +40,6 @@
                                                                                      ascending:YES
                                                                                       selector:@selector(localizedCaseInsensitiveCompare:)]];
     request.predicate = [NSPredicate predicateWithFormat:@"tookWhere.name = %@", self.place.name];
-                                                        
-    NSError *error = nil;
-    NSArray *matches = [vacationDocument.managedObjectContext executeFetchRequest:request error:&error];
-    NSLog(@"matches = %@", matches);
     
     self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request
                                                                         managedObjectContext:vacationDocument.managedObjectContext
@@ -68,6 +62,16 @@
     cell.textLabel.text = photo.title;
     
     return cell;
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
+    Photo *photo = [self.fetchedResultsController objectAtIndexPath:indexPath]; // ask NSFRC for the NSMO at the row in question
+    if ([segue.identifier isEqualToString:@"ShowPhoto"]) {
+        NSDictionary *photoDictionary = [NSDictionary dictionaryWithObjectsAndKeys:photo.photoID, FLICKR_PHOTO_ID, photo.title, FLICKR_PHOTO_TITLE, nil];
+        [segue.destinationViewController setPhoto:photoDictionary];
+    }
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil

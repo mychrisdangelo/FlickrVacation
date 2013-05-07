@@ -11,6 +11,8 @@
 #import "Place.h"
 #import "Photo.h"
 #import "ItineraryTableViewController.h"
+#import "FlickrFetcher.h"
+#import "PhotoViewController.h"
 
 @interface PhotosTakenHereTableViewController : CoreDataTableViewController
 
