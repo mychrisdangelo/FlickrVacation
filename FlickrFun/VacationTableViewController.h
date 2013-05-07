@@ -6,11 +6,12 @@
 //  Copyright (c) 2013 Chris D'Angelo. All rights reserved.
 //
 
-#import "CoreDataTableViewController.h"
+#import <UIKit/UIKit.h>
 #import "VacationHelper.h"
+#import "VacationChoiceTableViewController.h"
 
 
-@interface VacationTableViewController : CoreDataTableViewController
+@interface VacationTableViewController : UITableViewController
 
 @property (nonatomic, strong) NSArray *vacations;
 

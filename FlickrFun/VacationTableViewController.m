@@ -26,21 +26,38 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
+    
     NSURL *url = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
     url = [url URLByAppendingPathComponent:VACATIONS_DIRECTORY];
     // url is now "<Documents Directory>/Vacations"
     self.vacations = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:[url path] error:nil];
-    NSLog(@"self.vacations = %@", self.vacations);
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [self.vacations count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Vacation Cell";
+    static NSString *CellIdentifier = @"VacationCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    cell.textLabel.text = [self.vacations objectAtIndex:indexPath];
+    cell.textLabel.text = [self.vacations objectAtIndex:indexPath.row];
     
     return cell;
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"VacationChoiceSegue"]) {
+        NSString *vacation = [self.vacations objectAtIndex:[self.tableView indexPathForCell:sender].row];
+        if ([segue.destinationViewController respondsToSelector:@selector(setVacation:)]) {
+            [segue.destinationViewController setVacation:vacation];
+        }
+    }
+    
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil

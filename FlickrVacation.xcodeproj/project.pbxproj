@@ -23,6 +23,9 @@
 		407FB75B1738641C000B88A5 /* Place.m in Sources */ = {isa = PBXBuildFile; fileRef = 407FB75A1738641C000B88A5 /* Place.m */; };
 		407FB75E1738641D000B88A5 /* Tag.m in Sources */ = {isa = PBXBuildFile; fileRef = 407FB75D1738641D000B88A5 /* Tag.m */; };
 		407FB7611738641D000B88A5 /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 407FB7601738641D000B88A5 /* Photo.m */; };
+		407FB76417387AA3000B88A5 /* VacationChoiceTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 407FB76317387AA3000B88A5 /* VacationChoiceTableViewController.m */; };
+		407FB76717387E0F000B88A5 /* ItineraryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 407FB76617387E0F000B88A5 /* ItineraryTableViewController.m */; };
+		407FB76A17387FCE000B88A5 /* SearchTagsTableViewcontroller.m in Sources */ = {isa = PBXBuildFile; fileRef = 407FB76917387FCE000B88A5 /* SearchTagsTableViewcontroller.m */; };
 		40A514F31735FF0300496673 /* VacationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A514F21735FF0300496673 /* VacationHelper.m */; };
 		40A53D8617372086006BA785 /* VacationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A53D8517372086006BA785 /* VacationTableViewController.m */; };
 		40A53D8917372AD9006BA785 /* VacationPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A53D8817372AD9006BA785 /* VacationPhotoViewController.m */; };
@@ -75,6 +78,12 @@
 		407FB75D1738641D000B88A5 /* Tag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tag.m; sourceTree = "<group>"; };
 		407FB75F1738641D000B88A5 /* Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Photo.h; sourceTree = "<group>"; };
 		407FB7601738641D000B88A5 /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Photo.m; sourceTree = "<group>"; };
+		407FB76217387AA3000B88A5 /* VacationChoiceTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VacationChoiceTableViewController.h; sourceTree = "<group>"; };
+		407FB76317387AA3000B88A5 /* VacationChoiceTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VacationChoiceTableViewController.m; sourceTree = "<group>"; };
+		407FB76517387E0F000B88A5 /* ItineraryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItineraryTableViewController.h; sourceTree = "<group>"; };
+		407FB76617387E0F000B88A5 /* ItineraryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItineraryTableViewController.m; sourceTree = "<group>"; };
+		407FB76817387FCD000B88A5 /* SearchTagsTableViewcontroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchTagsTableViewcontroller.h; sourceTree = "<group>"; };
+		407FB76917387FCE000B88A5 /* SearchTagsTableViewcontroller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchTagsTableViewcontroller.m; sourceTree = "<group>"; };
 		40A514F11735FF0300496673 /* VacationHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VacationHelper.h; sourceTree = "<group>"; };
 		40A514F21735FF0300496673 /* VacationHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VacationHelper.m; sourceTree = "<group>"; };
 		40A53D8417372086006BA785 /* VacationTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VacationTableViewController.h; sourceTree = "<group>"; };
@@ -158,6 +167,12 @@
 				40A514F21735FF0300496673 /* VacationHelper.m */,
 				40A53D8417372086006BA785 /* VacationTableViewController.h */,
 				40A53D8517372086006BA785 /* VacationTableViewController.m */,
+				407FB76217387AA3000B88A5 /* VacationChoiceTableViewController.h */,
+				407FB76317387AA3000B88A5 /* VacationChoiceTableViewController.m */,
+				407FB76517387E0F000B88A5 /* ItineraryTableViewController.h */,
+				407FB76617387E0F000B88A5 /* ItineraryTableViewController.m */,
+				407FB76817387FCD000B88A5 /* SearchTagsTableViewcontroller.h */,
+				407FB76917387FCE000B88A5 /* SearchTagsTableViewcontroller.m */,
 			);
 			name = Vacations;
 			sourceTree = "<group>";
@@ -356,6 +371,9 @@
 				407FB75B1738641C000B88A5 /* Place.m in Sources */,
 				407FB75E1738641D000B88A5 /* Tag.m in Sources */,
 				407FB7611738641D000B88A5 /* Photo.m in Sources */,
+				407FB76417387AA3000B88A5 /* VacationChoiceTableViewController.m in Sources */,
+				407FB76717387E0F000B88A5 /* ItineraryTableViewController.m in Sources */,
+				407FB76A17387FCE000B88A5 /* SearchTagsTableViewcontroller.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
