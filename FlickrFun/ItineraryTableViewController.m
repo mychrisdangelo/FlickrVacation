@@ -31,7 +31,7 @@
 - (void)setupFetchedResultsController:(UIManagedDocument *)vacationDocument
 {
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Place"];
-    request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES selector:@selector(localizedCaseInsensitiveCompare:)]];
+    request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"creationDate" ascending:YES selector:@selector(compare:)]];
     // no predicate because we want ALL the Places
     
     self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request

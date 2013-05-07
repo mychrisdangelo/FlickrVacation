@@ -14,6 +14,7 @@
 @interface Place : NSManagedObject
 
 @property (nonatomic, retain) NSString * name;
+@property (nonatomic, retain) NSDate * creationDate;
 @property (nonatomic, retain) NSSet *photosHere;
 @end
 
