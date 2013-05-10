@@ -11,14 +11,14 @@
     <entity name="Place" representedClassName="Place" syncable="YES">
         <attribute name="creationDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="photosHere" toMany="YES" minCount="1" deletionRule="Nullify" destinationEntity="Photo" inverseName="tookWhere" inverseEntity="Photo" syncable="YES"/>
+        <relationship name="photosHere" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Photo" inverseName="tookWhere" inverseEntity="Photo" syncable="YES"/>
     </entity>
     <entity name="Tag" representedClassName="Tag" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="tagFor" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Photo" inverseName="taggedWith" inverseEntity="Photo" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Photo" positionX="178" positionY="-27" width="128" height="135"/>
+        <element name="Photo" positionX="178" positionY="-27" width="128" height="133"/>
         <element name="Place" positionX="351" positionY="153" width="128" height="88"/>
         <element name="Tag" positionX="-9" positionY="108" width="128" height="75"/>
     </elements>

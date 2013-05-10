@@ -51,7 +51,6 @@
     request.predicate = [NSPredicate predicateWithFormat:@"photoID = %@", [flickrInfo objectForKey:FLICKR_PHOTO_ID]];
     NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"photoID" ascending:YES];
     request.sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
-    
     NSError *error = nil;
     NSArray *matches = [context executeFetchRequest:request error:&error];
     
@@ -62,8 +61,27 @@
         // nothing to remove
     } else {
         photo = [matches lastObject];
+        
+        // first check if there are other photos that use this location
+        request = [NSFetchRequest fetchRequestWithEntityName:@"Photo"];
+        request.predicate = [NSPredicate predicateWithFormat:@"tookWhere.name = %@", photo.tookWhere.name];
+        sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"photoID" ascending:YES];
+        error = nil;
+        matches = [context executeFetchRequest:request error:&error];
+        
+        if ([matches count] == 1) {
+            // if only one photo uses this location then remove the location before removing the photo
+            request = [NSFetchRequest fetchRequestWithEntityName:@"Place"];
+            request.predicate = [NSPredicate predicateWithFormat:@"name = %@", photo.tookWhere.name];
+            sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
+            error = nil;
+            matches = [context executeFetchRequest:request error:&error];
+            
+            Place *place = [matches lastObject];
+            [context deleteObject:place];
+        }
+        
         [context deleteObject:photo];
-#warning may need to delete link but maybe coredata is handling it
     }
     
     return photo;
