@@ -7,6 +7,8 @@
 //
 
 #import "SearchTagsTableViewcontroller.h"
+#import "VacationHelper.h"
+#import "Tag.h"
 
 @interface SearchTagsTableViewcontroller ()
 
@@ -21,7 +23,40 @@
     if(_vacation != vacation) {
         _vacation = vacation;
         self.title = self.vacation;
+        [VacationHelper openVacation:self.vacation usingBlock:^(UIManagedDocument *vacationDocument) {
+            [self setupFetchedResultsController:vacationDocument];
+        }];
     }
+}
+
+// attaches an NSFetchRequest to this UITableViewController
+- (void)setupFetchedResultsController:(UIManagedDocument *)vacationDocument
+{
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Tag"];
+    request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES selector:@selector(localizedCaseInsensitiveCompare:)]];
+    // no predicate because we want ALL the Tags
+    
+    self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request
+                                                                        managedObjectContext:vacationDocument.managedObjectContext
+                                                                          sectionNameKeyPath:nil
+                                                                                   cacheName:nil];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"TagCell";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
+    
+    // ask NSFetchedResultsController for the NSMO at the row in question
+    Tag *tag = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    // Then configure the cell using it ...
+    cell.textLabel.text = tag.name;
+    
+    return cell;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil

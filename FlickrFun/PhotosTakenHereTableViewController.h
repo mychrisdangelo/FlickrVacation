@@ -12,7 +12,7 @@
 #import "Photo.h"
 #import "ItineraryTableViewController.h"
 #import "FlickrFetcher.h"
-#import "PhotoViewController.h"
+#import "VacationPhotoViewController.h"
 
 @interface PhotosTakenHereTableViewController : CoreDataTableViewController
 

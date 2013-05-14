@@ -62,10 +62,12 @@
             [vacation saveToURL:vacation.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:NULL];            
         }];
     } else {
+        // else user pressed "unvisit"
         sender.title = @"Visit";
         [VacationHelper openVacation:MY_VACATION usingBlock:^(UIManagedDocument *vacation) {
             [Photo removePhotoWithFlickrInfo:self.photo inManagedObjectContext:vacation.managedObjectContext];
             [vacation saveToURL:vacation.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:NULL];
+#warning need to fix case when user is in-vacation and unvisits a photo
         }];
     }
 }

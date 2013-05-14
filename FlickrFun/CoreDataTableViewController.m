@@ -126,7 +126,7 @@
 	   atIndexPath:(NSIndexPath *)indexPath
 	 forChangeType:(NSFetchedResultsChangeType)type
 	  newIndexPath:(NSIndexPath *)newIndexPath
-{		
+{
     if (!self.suspendAutomaticTrackingOfChangesInManagedObjectContext)
     {
         switch(type)
