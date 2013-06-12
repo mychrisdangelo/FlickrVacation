@@ -44,7 +44,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"TagCell";
+    static NSString *CellIdentifier = @"SearchTagCell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
@@ -55,6 +55,7 @@
     Tag *tag = [self.fetchedResultsController objectAtIndexPath:indexPath];
     // Then configure the cell using it ...
     cell.textLabel.text = tag.name;
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%d photo%@", [tag.tagFor count], [tag.tagFor count] == 1 ? @"" : @"s"];
     
     return cell;
 }

@@ -10,7 +10,7 @@
 
 @implementation Tag (Create)
 
-+ (NSSet *)tagsWithNames:(NSArray *)tagNames inManagedObjectContext:(NSManagedObjectContext *)context
++ (NSSet *)tagsWithNames:(NSArray *)tagNames withPhoto:(Photo *)photo inManagedObjectContext:(NSManagedObjectContext *)context
 {
     NSMutableSet *tags = nil;
     Tag *tag = nil;
@@ -32,13 +32,17 @@
             // handle error
             NSLog(@"Problem requesting or tag is stored more than once already");
         } else if (![matches count]) {
+            // add tag for first time
             tag = [NSEntityDescription insertNewObjectForEntityForName:@"Tag"
                                                 inManagedObjectContext:context];
             tag.name = [tagName capitalizedString];
         } else {
+            // add our photo to the tag that already exists
             tag = [matches lastObject];
         }
-        
+
+#warning this is not working
+        [tag addTagForObject:photo];
         [tags addObject:tag];
         
     }

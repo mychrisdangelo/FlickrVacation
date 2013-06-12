@@ -33,13 +33,13 @@
         photo.title = [flickrInfo objectForKey:FLICKR_PHOTO_TITLE];
         photo.subtitle = [flickrInfo valueForKeyPath:FLICKR_PHOTO_DESCRIPTION];
         photo.imageURL = [[FlickrFetcher urlForPhoto:flickrInfo format:FlickrPhotoFormatLarge] absoluteString];
-
-        // add tags for photograh
-        NSArray *tags = [[flickrInfo objectForKey:FLICKR_TAGS] componentsSeparatedByString: @" "];
-        photo.taggedWith = [Tag tagsWithNames:tags inManagedObjectContext:context];
                          
         // add place for photograph
         photo.tookWhere = [Place placeWithName:[flickrInfo objectForKey:FLICKR_PHOTO_PLACE_NAME] inManagedObjectContext:context];
+        
+        // add tags for photograh
+        NSArray *tags = [[flickrInfo objectForKey:FLICKR_TAGS] componentsSeparatedByString: @" "];
+        photo.taggedWith = [Tag tagsWithNames:tags withPhoto:photo inManagedObjectContext:context];
     } else {
         photo = [matches lastObject];
     }

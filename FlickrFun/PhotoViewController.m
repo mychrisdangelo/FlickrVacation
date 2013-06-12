@@ -113,9 +113,8 @@
             [self zoomToFit];
         });
     });
-
-
 }
+
 
 - (void)viewDidLoad
 {
